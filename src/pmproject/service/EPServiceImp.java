@@ -2,6 +2,8 @@ package pmproject.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -54,13 +56,13 @@ public class EPServiceImp implements EPService{
 			return false;
 		}
 		
-		MemberVO dbEp = epDao.selectEP(ep.getEp_id());
-		
-		if(dbEp == null) {
-			return false;
-		}
+		int stNum = 3;
 
-		if(epDao.deleteEP(ep.getEp_id())) {
+		if(epDao.deleteEP(ep.getEp_id(), stNum)) {
+			LocalDate date = LocalDate.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			String today = date.format(formatter);
+			epDao.insertTm(ep.getEp_id(), today);
 			return true;
 		}
 		return false;

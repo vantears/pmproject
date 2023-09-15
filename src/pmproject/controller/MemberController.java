@@ -37,7 +37,7 @@ public class MemberController {
 		System.out.println("1. 직원 등록");
 		System.out.println("2. 직원 정보 관리");
 		System.out.println("3. 직원 퇴사 및 휴가 관리");
-		System.out.println("5. 이전 메뉴");
+		System.out.println("4. 이전 메뉴");
 		System.out.println("=================");
 		System.out.print("메뉴 선택 : ");
 		

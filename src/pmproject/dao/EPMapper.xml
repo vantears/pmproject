@@ -14,9 +14,9 @@
 	<select id="selectEP" resultType="pmproject.vo.MemberVO">
   		select * from employee where ep_id = #{ep_id}
  	 </select>
-	<delete id="deleteEP">
-  		delete from employee where ep_id = #{ep_id}
- 	</delete>
+	<update id="deleteEP">
+  		update employee set ep_st_num = #{stNum}, ep_leave = 0, ep_salary = 0  where ep_id = #{ep_id}
+ 	</update>
  	<update id="updateEP">
   	update employee
   		set
@@ -30,5 +30,7 @@
 	    ep_salay = #{dbEp.ep_salay}
 	  	where ep_id = #{dbEp.ep_id}
   	</update>
- 	
+ 	<insert id="insertTm">
+ 		insert into termination(tm_date, tm_reason, tm_ep_id) values(#{today}, '퇴직', #{ep_id})
+ 	</insert>
 </mapper>

@@ -10,13 +10,12 @@ public interface EPDAO {
 
 	List<MemberVO> selectEPList();
 
-	MemberVO selectEP(@Param("ep_id")int ep_id);
+	MemberVO selectEP(@Param("ep_id") int ep_id);
 
-	boolean deleteEP(@Param("ep_id")int ep_id);
+	boolean deleteEP(@Param("ep_id") int ep_id, @Param("stNum") int stNum);
 
-	int updateEP(@Param("dbEp")MemberVO dbEp);
+	int updateEP(@Param("dbEp") MemberVO dbEp);
 
-	
-
+	void insertTm(@Param("ep_id") int ep_id, @Param("today") String today);
 
 }
