@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import pmproject.dao.TimeoffDAO;
+import pmproject.vo.LeaveVO;
 import pmproject.vo.TimeoffVO;
 
 public class TimeoffServiceImp implements TimeoffService{
@@ -43,14 +44,12 @@ public class TimeoffServiceImp implements TimeoffService{
 		if(timeoff == null) {
 			return false;
 		}
-		TimeoffVO dbTimeoff = timeoffDao.selectTimeoff(timeoff.getTm_num());
+		TimeoffVO dbTimeoff = timeoffDao.selectTimeoff(timeoff.getTm_ep_id());
 		if(dbTimeoff == null) {
 			return false;
 		} else {
 			dbTimeoff.setTm_date(timeoff.getTm_date());
-			dbTimeoff.setTm_return_date(timeoff.getTm_return_date());
 			dbTimeoff.setTm_reason(timeoff.getTm_reason());
-			dbTimeoff.setTm_ep_id(timeoff.getTm_ep_id());
 			if(timeoffDao.updateTimeoff(dbTimeoff) != 0) {
 				return true;
 			}
@@ -59,20 +58,27 @@ public class TimeoffServiceImp implements TimeoffService{
 	}
 
 	@Override
-	public boolean insertTimeoff(TimeoffVO timeoff) {
+	public boolean insertTimeoff(LeaveVO timeoff) {
 		if(timeoff == null) {
 			return false;
 		}
-		System.out.println("확인1");
-		TimeoffVO timeOffID = timeoffDao.selectTimeoff(timeoff.getTm_num());
-		if(timeOffID == null) {
-			return false;
-		} 
-		System.out.println("확인2");
-		if(timeoffDao.insertTimeoff(timeoff) != 0) {
-			return true;
+		timeoffDao.insertTimeoff(timeoff);
+		return true;
+	}
+
+	@Override
+	public TimeoffVO selectTimeoff(String ep_id) {
+		if(ep_id == null) {
+			return null;
 		}
-		System.out.println("확인3");
-		return false;
+		return timeoffDao.selectTimeoff(ep_id);
+	}
+
+	@Override
+	public List<LeaveVO> selectLeaveList(String ep_id) {
+		if(ep_id == null) {
+			return null;
+		}
+		return timeoffDao.selectLeaveList(ep_id);
 	}	
 }

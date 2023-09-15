@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pmproject.dao.ProjectDAO">
+	<select id="selectProjectAll">
+		select * from project
+	</select>
+	<select id="selectProjectNow">
+		select * from project where pj_state = "진행";
+	</select>
+	<select id="selectProjectSoon">
+		select * from project where pj_state = "예정";
+	</select>
+	<select id="selectProjectDone">
+		select * from project where pj_state = "종료";
+	</select>
+	<select id="selectProject" resultType="pmproject.vo.ProjectVO">
+  		select * from project where pj_name = #{pj_name};
+  	</select>
+  	<insert id="insertProject">
+		insert into project(pj_name, pj_start_date, pj_end_date, pj_state) 
+		values(#{project.pj_name}, #{project.pj_start_date}, #{project.pj_end_date}, #{project.pj_state}); 
+	</insert>
+	<update id="updateName">
+		update project set pj_name = #{pj_name} where pj_num = #{pj_num};
+	</update>
+	<update id="updateStart_date">
+		update project set pj_start_date = #{pj_start_date} where pj_num = #{pj_num};
+	</update>
+	<update id="updateEnd_date">
+		update project set pj_end_date = #{pj_end_date} where pj_num = #{pj_num};
+	</update>
+	<update id="updateState">
+		update project set pj_state = #{pj_state} where pj_num = #{pj_num};
+	</update>
+</mapper>

@@ -56,7 +56,7 @@ public class EPServiceImp implements EPService{
 			return false;
 		}
 		
-		int stNum = 3;
+		int stNum = 2;
 
 		if(epDao.deleteEP(ep.getEp_id(), stNum)) {
 			LocalDate date = LocalDate.now();
