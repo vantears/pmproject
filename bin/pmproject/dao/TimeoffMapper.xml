@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pmproject.dao.TimeoffDAO">
+	<select id ="selectTimeoffList" resultType="pmproject.vo.TimeoffVO">
+		select * from termination;
+	</select>
+	<select id="selectTimeoff" resultType="pmproject.vo.TimeoffVO">
+  		select * from termination where tm_num = #{tm_num}
+ 	 </select>
+ 	 <update id="updateTimeoff">
+    update termination
+	    set
+	    tm_date = #{dbTimeoff.tm_date},
+	    tm_return_date = #{dbTimeoff.tm_return_date},
+	    tm_reason = #{dbTimeoff.tm_reason},
+	    tm_ep_id = #{dbTimeoff.tm_ep_id}
+	    where tm_num = #{dbTimeoff.tm_num}
+	</update>
+  	<insert id="insertTimeoff">
+  		insert into termination(tm_date, tm_return_date, tm_reason, tm_ep_id) 
+  		values(#{timeoff.tm_date},#{timeoff.tm_return_date},#{timeoff.tm_reason},#{timeoff.tm_ep_id})
+  	</insert>
+</mapper>
+
+
+
+
+

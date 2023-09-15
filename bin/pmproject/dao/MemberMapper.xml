@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="pmproject.dao.MemberDAO">
+ 	<insert id="insertMember">
+ 		insert into employee(ep_name, ep_email, ep_phone_num, ep_salary) values(#{member.ep_name}, #{member.ep_email}, #{member.ep_phone_num}, #{member.ep_salary})
+ 	</insert>
+ 	<select id="selectMember" resultType="pmproject.vo.MemberVO">
+ 		select * from employee where ep_phone_num = #{ep_phone_num}
+ 	</select>
+ 	<select id="selectDept" resultType="String">
+ 		select dm_name from department where dm_num = #{ep_dm_num}
+ 	</select>
+ 	<select id="selectPos" resultType="String">
+ 		select po_name from position where po_num = #{ep_po_num}
+ 	</select>
+ 	<select id="selectSt" resultType="String">
+ 		select st_type from status where st_num = #{ep_st_num}
+ 	</select>
+ 	<update id="updatePhone">
+ 		update employee set ep_phone_num = #{ep_phone_num} where ep_id = #{ep_id}
+ 	</update>
+ 	<select id="selectAllDept" resultType="pmproject.vo.DeptVO">
+ 		select * from department
+ 	</select>
+ 	<update id="updateDept">
+ 		update employee set ep_dm_num = #{dept} where ep_phone_num = #{phone}
+ 	</update>
+ 	<update id="updateSalary">
+ 		update employee set ep_salary = #{salary} where ep_phone_num = #{phone}
+ 	</update>
+ 	<select id="selectSalaryType" resultType="pmproject.vo.SalaryVO">
+ 		select * from pay
+ 	</select>
+ 	<insert id="insertSalaryHistory">
+ 		insert into salaryhistory(sh_payday, sh_ep_id, sh_pa_type, sh_type_detail, sh_salary) values(#{sh_payday},#{sh_ep_id},#{sh_pa_type},#{sh_type_detail},#{sh_salary})
+ 	</insert>
+ 	<select id="selectSalaryHistory" resultType="pmproject.vo.SalaryHistoryVO">
+ 		select * from salaryhistory where sh_ep_id = #{sh_ep_id}
+ 	</select>
+ 	<insert id="insertTransfer">
+ 		insert into transfer(tr_date, tr_reason, tr_ep_id, tr_dm_num) values(#{tr_date},#{tr_reason},#{tr_ep_id},#{tr_dm_num})
+ 	</insert>
+ 	<select id="selectTransfer" resultType="pmproject.vo.TransferVO">
+ 		select * from transfer where tr_ep_id = #{ep_id}
+ 	</select>
+ </mapper>
