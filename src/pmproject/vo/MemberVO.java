@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MemberVO {
 
-	private String ep_name, ep_email, ep_phone_num, ep_pos, ep_dept, ep_st;
-	private int ep_id, ep_dm_num, ep_po_num, ep_st_num, ep_leave, ep_salary;
+	private String ep_id, ep_name, ep_email, ep_phone_num, ep_pos, ep_dept, ep_st;
+	private int ep_dm_num, ep_po_num, ep_st_num, ep_leave, ep_salary;
 	
 	public MemberVO(String name, String email, String phone, int salary) {
 		ep_name = name;
@@ -17,7 +17,7 @@ public class MemberVO {
 		ep_salary = salary;
 	}
 	
-	public MemberVO(int ep_id, String ep_name) {
+	public MemberVO(String ep_id, String ep_name) {
 		this.ep_id = ep_id;
 		this.ep_name = ep_name;
 	}
@@ -25,6 +25,7 @@ public class MemberVO {
 	public String toString() {
 		
 		return "\n" +
+				"사번 : " + ep_id + "\n" +
 				"이름 : " + ep_name + "\n" +
 				"이메일 : " + ep_email + "\n" +
 				"연락처 : " + ep_phone_num + "\n" +

@@ -2,17 +2,19 @@ package pmproject.vo;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class TimeoffVO {
 	int tm_num;
 	Date tm_date;
 	Date tm_return_date;
 	String tm_reason;
-	int tm_ep_id;
+	String tm_ep_id;
 
 	@Override
 	public String toString() {
@@ -20,22 +22,13 @@ public class TimeoffVO {
 				 + "퇴사/휴직 날짜 "+ ": " + tm_date +"\n"
 		         + "복직날짜 "+ ": " +tm_return_date +"\n"
 		         + "사유 "+ ": " +tm_reason +"\n"
-		         + "직원 번호 "+ ": " +tm_ep_id +"\n";
+		         + "사번 "+ ": " +tm_ep_id +"\n";
 	}
 
-	public TimeoffVO(int tm_num, Date tm_date, Date tm_return_date, String tm_reason, int tm_ep_id) {
-		this.tm_num = tm_num;
+	public TimeoffVO(Date tm_date, Date tm_return_date, String tm_reason, String tm_ep_id) {
 		this.tm_date = tm_date;
 		this.tm_return_date = tm_return_date;
 		this.tm_reason = tm_reason;
 		this.tm_ep_id = tm_ep_id;
 	}
-
-	public TimeoffVO(Date tm_date, Date tm_return_date, String tm_reason, int tm_ep_id) {
-		this.tm_date = tm_date;
-		this.tm_return_date = tm_return_date;
-		this.tm_reason = tm_reason;
-		this.tm_ep_id = tm_ep_id;
-	}
-
 }

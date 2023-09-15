@@ -64,7 +64,7 @@ public class TimeoffServiceImp implements TimeoffService{
 			return false;
 		}
 		System.out.println("»Æ¿Œ1");
-		TimeoffVO timeOffID = timeoffDao.selectTimeoff(timeoff.getTm_ep_id());
+		TimeoffVO timeOffID = timeoffDao.selectTimeoff(timeoff.getTm_num());
 		if(timeOffID == null) {
 			return false;
 		} 

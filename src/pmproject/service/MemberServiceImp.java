@@ -38,7 +38,7 @@ public class MemberServiceImp implements MemberService{
 		if(member == null || member.getEp_name() == null || member.getEp_phone_num() == null) {
 			return false;
 		}
-		MemberVO dbMember = memberDao.selectMember(member.getEp_phone_num());
+		MemberVO dbMember = memberDao.selectMemberPhone(member.getEp_phone_num());
 		if(dbMember == null) {
 			memberDao.insertMember(member);			
 			return true;
@@ -48,11 +48,11 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public MemberVO selectMember(String phone) {
-		if(phone == null) {
+	public MemberVO selectMember(String id) {
+		if(id == null) {
 			return null;
 		}
-		MemberVO dbMember = memberDao.selectMember(phone);
+		MemberVO dbMember = memberDao.selectMember(id);
 		if(dbMember == null) {
 			return null;
 		}
@@ -63,11 +63,11 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public boolean updatePhone(String phone, String newPhone) {
-		if(phone == null || newPhone == null) {
+	public boolean updatePhone(String id, String newPhone) {
+		if(id == null || newPhone == null) {
 			return false;
 		}
-		MemberVO dbMember = memberDao.selectMember(phone);
+		MemberVO dbMember = memberDao.selectMember(id);
 		if(dbMember == null) {
 			return false;
 		}
@@ -82,24 +82,24 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public boolean updateDept(String phone, int dept, String reason, String today, int ep_id) {
-		if(phone == null || today == null || ep_id == 0) {
+	public boolean updateDept(String id, int dept, String reason, String today, String ep_id) {
+		if(id == null || today == null || ep_id == null) {
 			return false;
 		}
 		if(dept == 0) {
 			return false;
 		}
-		memberDao.updateDept(phone, dept);
+		memberDao.updateDept(id, dept);
 		memberDao.insertTransfer(today, reason, ep_id, dept);
 		return true;
 	}
 
 	@Override
-	public boolean updateSalary(String phone, int salary) {
-		if(phone == null) {
+	public boolean updateSalary(String id, int salary) {
+		if(id == null) {
 			return false;
 		}
-		memberDao.updateSalary(phone, salary);
+		memberDao.updateSalary(id, salary);
 		return true;
 	}
 
@@ -109,8 +109,8 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public boolean insertSalaryHistory(int ep_id, String salaryType, String salaryDetail, String today, int salary) {
-		if(ep_id == 0) {
+	public boolean insertSalaryHistory(String ep_id, String salaryType, String salaryDetail, String today, int salary) {
+		if(ep_id == null) {
 			return false;
 		}
 		if(salaryType == null || today == null) {
@@ -121,16 +121,16 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public List<SalaryHistoryVO> SearchSalaryHistory(int ep_id) {
-		if(ep_id == 0) {
+	public List<SalaryHistoryVO> SearchSalaryHistory(String ep_id) {
+		if(ep_id == null) {
 			return null;
 		}
 		return memberDao.selectSalaryHistory(ep_id);
 	}
 
 	@Override
-	public List<TransferVO> SearchTransfer(int ep_id) {
-		if(ep_id == 0) {
+	public List<TransferVO> SearchTransfer(String ep_id) {
+		if(ep_id == null) {
 			return null;
 		}
 		List<TransferVO> transfer = memberDao.selectTransfer(ep_id);
@@ -141,6 +141,11 @@ public class MemberServiceImp implements MemberService{
 			transfer.get(transfer.indexOf(tmp)).setTr_dept(memberDao.selectDept(transfer.get(transfer.indexOf(tmp)).getTr_dm_num()));
 		}
 		return transfer;
+	}
+
+	@Override
+	public int selectMemberCount() {
+		return memberDao.selectMemberCount();
 	}
 
 }

@@ -7,8 +7,8 @@ import lombok.Data;
 
 @Data
 public class SalaryHistoryVO {
-	private Date sh_payday;
-	private int sh_ep_id, sh_salary;
+	private Date sh_payday, sh_ep_id;
+	private int sh_salary;
 	private String sh_pa_type, sh_type_detail;
 	
 	public String toString() {

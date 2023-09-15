@@ -4,10 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="pmproject.dao.MemberDAO">
  	<insert id="insertMember">
- 		insert into employee(ep_name, ep_email, ep_phone_num, ep_salary) values(#{member.ep_name}, #{member.ep_email}, #{member.ep_phone_num}, #{member.ep_salary})
+ 		insert into employee(ep_id, ep_name, ep_email, ep_phone_num, ep_salary) values(#{member.ep_id}, #{member.ep_name}, #{member.ep_email}, #{member.ep_phone_num}, #{member.ep_salary})
  	</insert>
  	<select id="selectMember" resultType="pmproject.vo.MemberVO">
- 		select * from employee where ep_phone_num = #{ep_phone_num}
+ 		select * from employee where ep_id = #{id}
+ 	</select>
+ 	<select id="selectMemberPhone" resultType="pmproject.vo.MemberVO">
+ 		select * from employee where ep_phone_num = #{phone}
  	</select>
  	<select id="selectDept" resultType="String">
  		select dm_name from department where dm_num = #{ep_dm_num}
@@ -25,10 +28,10 @@
  		select * from department
  	</select>
  	<update id="updateDept">
- 		update employee set ep_dm_num = #{dept} where ep_phone_num = #{phone}
+ 		update employee set ep_dm_num = #{dept} where ep_id = #{id}
  	</update>
  	<update id="updateSalary">
- 		update employee set ep_salary = #{salary} where ep_phone_num = #{phone}
+ 		update employee set ep_salary = #{salary} where ep_id = #{id}
  	</update>
  	<select id="selectSalaryType" resultType="pmproject.vo.SalaryVO">
  		select * from pay
@@ -44,5 +47,8 @@
  	</insert>
  	<select id="selectTransfer" resultType="pmproject.vo.TransferVO">
  		select * from transfer where tr_ep_id = #{ep_id}
+ 	</select>
+ 	<select id="selectMemberCount" resultType="int">
+ 		select count(*) from employee
  	</select>
  </mapper>

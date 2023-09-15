@@ -62,7 +62,7 @@ private void timeoff2(int menu) {
 		System.out.print("사유 : ");
 		String tm_reason = sc.nextLine();
 		System.out.print("직원 id : ");
-		int tm_ep_id = sc.nextInt();
+		String tm_ep_id = sc.next();
 		
 		try {
 	        Date tm_date = dateFormat.parse(tm_datestr);
@@ -105,7 +105,7 @@ private void timeoff2(int menu) {
 		System.out.print("사유 : ");
 		String tm_reason = sc.nextLine();
 		System.out.print("직원 id : ");
-		int tm_ep_id = sc.nextInt();
+		String tm_ep_id = sc.next();
 		
 		
 		try {
