@@ -82,7 +82,7 @@ CREATE TABLE `attendance_type` (
   `at_num` int NOT NULL AUTO_INCREMENT,
   `at_type` varchar(15) NOT NULL,
   PRIMARY KEY (`at_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,6 +91,7 @@ CREATE TABLE `attendance_type` (
 
 LOCK TABLES `attendance_type` WRITE;
 /*!40000 ALTER TABLE `attendance_type` DISABLE KEYS */;
+INSERT INTO `attendance_type` VALUES (1,'결근'),(2,'출근'),(3,'재택'),(4,'출장'),(5,'조퇴');
 /*!40000 ALTER TABLE `attendance_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +152,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES ('PM00001','aaa','aaa','010-5888-5888',5,1,1,15,650);
+INSERT INTO `employee` VALUES ('PM00001','aaa','aaa','010-5888-5888',5,1,1,15,650),('PM00002','박나래','narae@pmcompany.co.kr','010-1235-1235',1,1,2,0,0);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +172,7 @@ CREATE TABLE `leave` (
   PRIMARY KEY (`le_num`),
   KEY `FK_employee_TO_Leave_1` (`le_ep_id`),
   CONSTRAINT `FK_employee_TO_Leave_1` FOREIGN KEY (`le_ep_id`) REFERENCES `employee` (`ep_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,6 +181,7 @@ CREATE TABLE `leave` (
 
 LOCK TABLES `leave` WRITE;
 /*!40000 ALTER TABLE `leave` DISABLE KEYS */;
+INSERT INTO `leave` VALUES (1,'2023-09-15','2023-09-18','연차','PM00001');
 /*!40000 ALTER TABLE `leave` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +246,7 @@ CREATE TABLE `project` (
   `pj_end_date` date DEFAULT NULL,
   `pj_state` varchar(15) NOT NULL,
   PRIMARY KEY (`pj_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -253,7 +255,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'종료 프로젝트1','2022-09-06','2023-03-21','종료'),(2,'종료 프로젝트2','2022-11-12','2023-06-30','종료'),(3,'진행 프로젝트1','2023-04-07',NULL,'진행'),(4,'진행 프로젝트2','2023-08-02',NULL,'진행'),(5,'예정 프로젝트1',NULL,NULL,'예정');
+INSERT INTO `project` VALUES (1,'종료 프로젝트1','2022-09-06','2023-03-21','종료'),(2,'종료 프로젝트2','2022-11-12','2023-06-30','종료'),(3,'진행 프로젝트1','2023-04-07',NULL,'진행'),(4,'진행 프로젝트2','2023-08-02',NULL,'진행'),(5,'예정 프로젝트1',NULL,NULL,'예정'),(6,'예정 프로젝트4-1','2023-10-16','2023-12-31','예정');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +339,7 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (1,'재직'),(2,'휴직'),(3,'퇴직');
+INSERT INTO `status` VALUES (1,'재직'),(2,'퇴직');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -351,13 +353,12 @@ DROP TABLE IF EXISTS `termination`;
 CREATE TABLE `termination` (
   `tm_num` int NOT NULL AUTO_INCREMENT,
   `tm_date` date NOT NULL,
-  `tm_return_date` date DEFAULT NULL,
   `tm_reason` varchar(30) NOT NULL,
   `tm_ep_id` varchar(20) NOT NULL,
   PRIMARY KEY (`tm_num`),
   KEY `FK_employee_TO_Termination_1` (`tm_ep_id`),
   CONSTRAINT `FK_employee_TO_Termination_1` FOREIGN KEY (`tm_ep_id`) REFERENCES `employee` (`ep_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -366,6 +367,7 @@ CREATE TABLE `termination` (
 
 LOCK TABLES `termination` WRITE;
 /*!40000 ALTER TABLE `termination` DISABLE KEYS */;
+INSERT INTO `termination` VALUES (1,'2023-09-15','퇴직','PM00002');
 /*!40000 ALTER TABLE `termination` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,4 +411,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-15 15:44:52
+-- Dump completed on 2023-09-15 17:28:52

@@ -7,12 +7,12 @@ import lombok.Data;
 
 @Data
 public class SalaryHistoryVO {
-	private Date sh_payday, sh_ep_id;
+	private Date sh_payday;
 	private int sh_salary;
-	private String sh_pa_type, sh_type_detail;
+	private String sh_pa_type, sh_type_detail, sh_ep_id;
 	
 	public String toString() {
-		return "[지급일 : " + getSh_payday_str() + " / " + "급여항목 : " + sh_pa_type + " / " + "급여 상세 : " + sh_type_detail + " / " + "급여액 : " + sh_salary + "]"; 
+		return "[지급일 : " + getSh_payday_str() + " / " + "급여항목 : " + sh_pa_type + " / " + "급여 상세 : " + sh_type_detail + " / " + "급여액(만원) : " + sh_salary + "]"; 
 	}
 	
 	public String getSh_payday_str() {

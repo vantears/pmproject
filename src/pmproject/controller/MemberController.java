@@ -114,7 +114,7 @@ public class MemberController {
 
 
 	private void searchTransfer() {
-		System.out.println("부서 이동 내역 조회할 직원 사번 : ");
+		System.out.print("부서 이동 내역 조회할 직원 사번 : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
 			System.out.println("[직원 조회 실패]");
@@ -134,7 +134,7 @@ public class MemberController {
 
 
 	private void giveSalary() {
-		System.out.println("급여 지급할 직원 사번 : ");
+		System.out.print("급여 지급할 직원 사번 : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
 			System.out.println("[직원 조회 실패]");
@@ -165,7 +165,7 @@ public class MemberController {
 			}
 			System.out.print("급여 상세 : ");
 			String salaryDetail = sc.nextLine();
-			System.out.println("급여액(만원) : ");
+			System.out.print("급여액(만원) : ");
 			int salary = sc.nextInt();
 			if(memberService.insertSalaryHistory(dbMember.getEp_id(), salaryType, salaryDetail, today, salary)) {
 				System.out.println("[급여 지급 완료]");
@@ -178,7 +178,7 @@ public class MemberController {
 
 
 	private void searchSalaryHistory() {
-		System.out.println("급여 내역 조회할 직원 사번 : ");
+		System.out.print("급여 내역 조회할 직원 사번 : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
 			System.out.println("[직원 조회 실패]");
@@ -296,48 +296,6 @@ public class MemberController {
 		
 	}
 
-
-	private void leaveManagementMenu() {
-		int menu;
-		final int EXIT = 3;
-		do {
-			System.out.println("=====직원 휴가 관리=====");
-			System.out.println("1. 직원 휴가 조회");
-			System.out.println("2. 직원 휴가 신청");
-			System.out.println("3. 이전 메뉴");
-			System.out.println("=================");
-			System.out.print("메뉴 선택 : ");
-			menu = sc.nextInt();
-			switch(menu) {
-			case 1:
-				searchLeave();
-				break;
-			case 2:
-				useLeave();
-				break;
-			case 3:
-				System.out.println("[이전 메뉴로 이동]");
-				break;
-			default:
-				System.out.println("[잘못된 메뉴 선택!]");
-			}
-		}while(menu != EXIT);
-		
-	}
-
-
-	private void useLeave() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	private void searchLeave() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	private void register() {
 		
 		System.out.print("직원 이름 : ");
@@ -361,56 +319,6 @@ public class MemberController {
 		} else {
 			System.out.println("[직원 등록 실패]");
 		}	
-		
-	}
-	
-	private void retirementManagementMenu() {
-		int menu;
-		final int EXIT = 4;
-		do {
-			System.out.println("=====직원 퇴사/휴직 관리=====");
-			System.out.println("1. 직원 퇴사/휴직 조회");
-			System.out.println("2. 직원 퇴사 처리");
-			System.out.println("3. 직원 휴직 처리");
-			System.out.println("4. 이전 메뉴");
-			System.out.println("=================");
-			System.out.print("메뉴 선택 : ");
-			menu = sc.nextInt();
-			switch(menu) {
-			case 1:
-				searchRetirement();
-				break;
-			case 2:
-				doRetirement();
-				break;
-			case 3:
-				doBreak();
-				break;
-			case 4:
-				System.out.println("[이전 메뉴로 이동]");
-				break;
-			default:
-				System.out.println("[잘못된 메뉴 선택!]");
-			}
-		}while(menu != EXIT);
-		
-	}
-
-
-	private void doBreak() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	private void doRetirement() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	private void searchRetirement() {
-		// TODO Auto-generated method stub
 		
 	}
 
