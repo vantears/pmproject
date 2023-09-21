@@ -20,7 +20,6 @@ public class Main {
 			sc.close();
 		}
 
-
 		private static void printMenu() {
 			System.out.println("=====메뉴=====");
 			System.out.println("1. 직원 관리");

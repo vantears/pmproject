@@ -43,5 +43,7 @@ public interface MemberDAO {
 	List<TransferVO> selectTransfer(@Param("ep_id") String ep_id);
 
 	int selectMemberCount();
+	
+	List<MemberVO> selectMemberList();
 
 }

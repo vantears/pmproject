@@ -4,34 +4,67 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pmproject.dao.ProjectDAO">
 	<select id="selectProjectAll">
-		select * from project
+		select * from `project`
 	</select>
 	<select id="selectProjectNow">
-		select * from project where pj_state = "진행";
+		select * from `project` where pj_state = "진행";
 	</select>
 	<select id="selectProjectSoon">
-		select * from project where pj_state = "예정";
+		select * from `project` where pj_state = "예정";
 	</select>
 	<select id="selectProjectDone">
-		select * from project where pj_state = "종료";
+		select * from `project` where pj_state = "종료";
 	</select>
 	<select id="selectProject" resultType="pmproject.vo.ProjectVO">
-  		select * from project where pj_name = #{pj_name};
+  		select * from `project` where pj_name = #{pj_name};
   	</select>
-  	<insert id="insertProject">
-		insert into project(pj_name, pj_start_date, pj_end_date, pj_state) 
-		values(#{project.pj_name}, #{project.pj_start_date}, #{project.pj_end_date}, #{project.pj_state}); 
+  	<insert id="insertProject1">
+		insert into `project`(pj_name, pj_state) 
+		values(#{project.pj_name}, "예정"); 
+	</insert>
+	<insert id="insertProject2">
+		insert into `project`(pj_name, pj_start_date, pj_state) 
+		values(#{project.pj_name}, #{project.pj_start_date}, "진행"); 
+	</insert>
+	<insert id="insertProject3">
+		insert into `project`(pj_name, pj_start_date, pj_end_date, pj_state) 
+		values(#{project.pj_name}, #{project.pj_start_date}, #{project.pj_end_date}, "종료"); 
 	</insert>
 	<update id="updateName">
-		update project set pj_name = #{pj_name} where pj_num = #{pj_num};
+		update `project` set pj_name = #{pj_name} where pj_num = #{pj_num};
 	</update>
 	<update id="updateStart_date">
-		update project set pj_start_date = #{pj_start_date} where pj_num = #{pj_num};
+		update `project` set pj_start_date = #{pj_start_date} where pj_num = #{pj_num};
 	</update>
 	<update id="updateEnd_date">
-		update project set pj_end_date = #{pj_end_date} where pj_num = #{pj_num};
+		update `project` set pj_end_date = #{pj_end_date} where pj_num = #{pj_num};
 	</update>
 	<update id="updateState">
-		update project set pj_state = #{pj_state} where pj_num = #{pj_num};
+		update `project` set pj_state = #{pj_state} where pj_num = #{pj_num};
 	</update>
+	<select id="selectProjectNum" resultType="pmproject.vo.ProjectVO">
+  		select * from `project` where pj_num = #{pj_num};
+  	</select>
+  	<select id="selectPjAllEmp1" resultType="pmproject.vo.ProjectVO">
+  		select * from `project`;
+  	</select>
+  	<select id="selectPjAllEmp2" resultType="pmproject.vo.Project_infoVO">
+  		select * from `project_info`;
+  	</select>
+  	<insert id="insertProject_info">
+  		insert into `project_info`(pi_ep_id, pi_pj_num, pi_role) 
+		values(#{project_info.pi_ep_id}, #{project_info.pi_pj_num}, #{project_info.pi_role}); 
+  	</insert>
+  	<select id="selectProject_infoNum">
+		  select * from `project_info` where pi_num = #{pi_num};
+	</select>
+	<update id="updateRole">
+		update `project_info` set pi_role = #{pi_role} where pi_num = #{pi_num};
+	</update>
+	<update id="updatePjNum">
+		update `project_info` set pi_pj_num = #{pi_pj_num} where pi_num = #{pi_num};
+	</update>
+	<delete id="deleteProject_info">
+		delete from `project_info` where pi_num = #{pi_num};
+	</delete>
 </mapper>

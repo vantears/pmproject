@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import pmproject.dao.ProjectDAO;
 import pmproject.vo.ProjectVO;
+import pmproject.vo.Project_infoVO;
 
 public class ProjectServiceImp implements ProjectService{
 
@@ -49,13 +50,41 @@ public class ProjectServiceImp implements ProjectService{
 	}
 
 	@Override
-	public boolean insertProject(ProjectVO project) {
+	public boolean insertProject1(ProjectVO project) {
 		if(project == null || project.getPj_name() == null) {
 			return false;
 		}
 		ProjectVO dbProject = projectDao.selectProject(project.getPj_name());
 		if(dbProject == null) {
-			projectDao.insertProject(project);
+			projectDao.insertProject1(project);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public boolean insertProject2(ProjectVO project) {
+		if(project == null || project.getPj_name() == null) {
+			return false;
+		}
+		ProjectVO dbProject = projectDao.selectProject(project.getPj_name());
+		if(dbProject == null) {
+			projectDao.insertProject2(project);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public boolean insertProject3(ProjectVO project) {
+		if(project == null || project.getPj_name() == null) {
+			return false;
+		}
+		ProjectVO dbProject = projectDao.selectProject(project.getPj_name());
+		if(dbProject == null) {
+			projectDao.insertProject3(project);
 			return true;
 		}
 		
@@ -127,6 +156,75 @@ public class ProjectServiceImp implements ProjectService{
 		return true;
 	}
 
+	@Override
+	public ProjectVO selectProject(int num) {
+		
+		ProjectVO dbProject = projectDao.selectProjectNum(num);
+		if(dbProject == null) {
+			return null;
+		}
+		return dbProject;
+	}
+	
+	@Override
+	public List<ProjectVO> getPjAllEmp1() {
+		return projectDao.selectPjAllEmp1();
+	}
+
+	@Override
+	public List<Project_infoVO> getPjAllEmp2() {
+		return projectDao.selectPjAllEmp2();
+	}
+
+	@Override
+	public boolean insertProject_info(Project_infoVO project_info) {
+		if(project_info == null || project_info.getPi_ep_id() == null || project_info.getPi_role() == null) {
+			return false;
+		}
+		projectDao.insertProject_info(project_info);
+		return true;
+	}
+
+	@Override
+	public Project_infoVO selectProject_info(int piNum) {
+		Project_infoVO dbProject_info = projectDao.selectProject_infoNum(piNum);
+		if(dbProject_info == null) {
+			return null;
+		}
+		return dbProject_info;
+	}
+
+	@Override
+	public boolean updateRole(int piNum, String newRole) {
+		Project_infoVO dbProject_piNum_info = projectDao.selectProject_infoNum(piNum);
+		if(dbProject_piNum_info == null) {
+			return false;
+		}
+		projectDao.updateRole(dbProject_piNum_info.getPi_num(), newRole);
+		return true;
+	}
+
+	@Override
+	public boolean updatePjNum(int piNum, int newPjNum) {
+		Project_infoVO dbProject_piNum_info = projectDao.selectProject_infoNum(piNum);
+		if(dbProject_piNum_info == null) {
+			return false;
+		}
+		Project_infoVO dbProject_newpjNum_info = projectDao.selectProject_infoNum(newPjNum);
+		if(dbProject_newpjNum_info == null) {
+			return false;
+		}
+		projectDao.updatePjNum(dbProject_piNum_info.getPi_num(), newPjNum);
+		return true;
+	}
+
+	@Override
+	public boolean deleteProject_info(int piNum) {
+		return projectDao.deleteProject_info(piNum);
+	}
+
+	
+	
 	
 	
 

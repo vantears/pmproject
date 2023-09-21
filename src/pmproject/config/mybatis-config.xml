@@ -19,5 +19,6 @@
    	<mapper resource="pmproject/dao/EPMapper.xml"/>
    	<mapper resource="pmproject/dao/TimeoffMapper.xml"/>
    	<mapper resource="pmproject/dao/ProjectMapper.xml"/>
+   	<mapper resource="pmproject/dao/AttendanceMapper.xml"/>
   </mappers>
 </configuration>

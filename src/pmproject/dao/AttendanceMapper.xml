@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+  
+<mapper namespace="pmproject.dao.AttendanceDAO">
+    <select id="selectAttendance" resultType="pmproject.vo.AttendanceVO">
+    	select * from attendance where ad_ep_id = #{ep_id} and ad_date = #{date}
+    </select>
+    <select id="selectAttendance2" resultType="pmproject.vo.AttendanceVO">
+    	select * from attendance where ad_num = #{ad_num}
+    </select>
+    <insert id="insertAttendance">
+    	insert into attendance(ad_date, ad_ep_id) values(#{date}, #{ep_id})
+    </insert>
+    <select id="selectAtrecord" resultType="pmproject.vo.AttendanceRecordVO">
+    	select * from at_record where ar_ad_num = #{ad_num}
+    </select>
+    <update id="updateEndTime">
+    	update at_record set ar_end_time = #{date} where ar_ad_num = #{ar_ad_num}
+    </update>
+    <insert id="insertAtRecord">
+    	insert into at_record(ar_ad_num, ar_st_time) values(#{ad_num},#{date})
+    </insert>
+    <select id="selectAllAttendance" resultType="pmproject.vo.AttendanceVO">
+    	select * from attendance where ad_ep_id = #{ep_id}
+    </select>
+    <select id="selectAllAttendance2" resultType="pmproject.vo.AttendanceVO">
+    	select * from attendance where ad_date = #{date}
+    </select>
+    <select id="selectAttendanceType" resultType="String">
+    	select at_type from attendance_type where at_num = #{ad_at_num}
+    </select>
+    <delete id="deleteAtRecord">
+    	delete from at_record where ar_ad_num = #{ad_num}
+    </delete>
+    <update id="updateAtType">
+    	update attendance set ad_at_num = #{at_num} where ad_num = #{ad_num}
+    </update>
+</mapper>

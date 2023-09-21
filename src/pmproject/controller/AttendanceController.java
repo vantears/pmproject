@@ -1,22 +1,26 @@
 package pmproject.controller;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import pmproject.dao.AttendanceDAO;
 import pmproject.service.AttendanceService;
 import pmproject.service.AttendanceServiceImp;
+import pmproject.vo.AttendanceVO;
+import pmproject.vo.MemberVO;
+import pmproject.vo.AttendanceRecordVO;
 
 public class AttendanceController {
     private AttendanceService attendanceService = new AttendanceServiceImp();
+    Scanner sc = new Scanner(System.in);
 
     public void run() {
         int menu;
-        final int EXIT = 7;
-        Scanner sc = new Scanner(System.in);
+        final int EXIT = 5;
 
         do {
-            printAttendanceMenu();
+            printMenu();
             menu = sc.nextInt();
 
             switch(menu) {
@@ -32,108 +36,103 @@ public class AttendanceController {
                 case 4:
                     changeAttendance();
                     break;
-                case 5:
-                    applyLeave();
-                    break;
-                case 6:
-                    viewLeave();
-                    break;
-                case 7:
+                case EXIT:
                     System.out.println("[출결 관리 종료]");
                     break;
                 default:
                     System.out.println("[잘못된 메뉴 선택]");
             }
         } while (menu != EXIT);
+
+        sc.close();
     }
 
-    private void printAttendanceMenu() {
+    private void printMenu() {
         System.out.println("=====출결 관리 메뉴=====");
-        System.out.println("1. 직원 출근 기록");
-        System.out.println("2. 직원 퇴근 기록");
+        System.out.println("1. 직원 출결 처리");
+        System.out.println("2. 퇴근 처리");
         System.out.println("3. 출결 조회");
         System.out.println("4. 출결 변경");
-        System.out.println("5. 휴가 신청");
-        System.out.println("6. 휴가 조회");
-        System.out.println("7. 메뉴로 돌아가기");
+        System.out.println("5. 메뉴로 돌아가기");
         System.out.println("=====================");
         System.out.print("메뉴 선택 : ");
     }
-
-    private void recordAttendance() {
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.print("직원 ID를 입력하세요: ");
-        int employeeId = sc.nextInt();
-        sc.nextLine();
-        
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println("직원 ID " + employeeId + "의 출근 기록: " + now);
-        attendanceService.recordAttendance(employeeId);
+    
+    private void printAttendanceMenu() {
+        System.out.println("1. 출근");
+        System.out.println("2. 재택");
+        System.out.println("3. 출장");
+        System.out.print("출결 종류 선택 : ");
     }
 
-    private void recordLeave() {
-        Scanner sc = new Scanner(System.in);
-        
+    private void recordAttendance() {
+    	LocalDate nowDate = LocalDate.now();
+		String formattedDateTime = nowDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         System.out.print("직원 ID를 입력하세요: ");
-        int employeeId = sc.nextInt();
-        sc.nextLine();
-        
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println("직원 ID " + employeeId + "의 퇴근 기록: " + now);
-        attendanceService.recordLeave(employeeId);
+        String employeeId = sc.next();
+        printAttendanceMenu();
+    	int ad_at_num = sc.nextInt();
+    	List<AttendanceVO> dbAtList = attendanceService.checkAttendanceDate(formattedDateTime);
+    	if(dbAtList.isEmpty()) {
+    		List<MemberVO> dbMemberList = attendanceService.getAllMember();
+    		attendanceService.recordAttendance(dbMemberList, formattedDateTime);
+    	}
+    	if(ad_at_num == 1) {
+    		AttendanceVO dbAt = attendanceService.getAttendance(employeeId, formattedDateTime);
+    		attendanceService.changeAttendance(dbAt.getAd_num(), ad_at_num + 1);
+    		System.out.println("[출결 등록 완료]");
+    	} else {
+    		AttendanceVO dbAt = attendanceService.getAttendance(employeeId, formattedDateTime);
+    		attendanceService.changeAttendance(dbAt.getAd_num(), ad_at_num + 1);
+    		System.out.println("[출결 등록 완료]");
+    	}    		
+    }
+
+    private void recordLeave() {     
+        System.out.print("직원 ID를 입력하세요: ");
+        String employeeId = sc.next();
+
+        if(attendanceService.recordLeave(employeeId)) {
+        	System.out.println("[퇴근 처리 완료]");
+        } else {
+        	System.out.println("[퇴근 처리 실패]");
+        };
     }
 
     private void viewAttendance() {
-        Scanner sc = new Scanner(System.in);
         System.out.print("직원 ID 입력: ");
-        int employeeId = sc.nextInt();
+        String employeeId = sc.next();
 
-        String attendanceStatus = attendanceService.viewAttendance(employeeId);
-
-        System.out.println("직원 ID " + employeeId + "의 출결 상태: " + attendanceStatus);
+        List<AttendanceVO> dbAtList = attendanceService.viewAttendance(employeeId);
+        for(AttendanceVO tmp : dbAtList) {
+        	if(tmp.getAd_at_num() == 2) {
+        		AttendanceRecordVO dbAtRecord = attendanceService.viewAttendanceRecord(tmp.getAd_num());
+        		System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " 직원 ID " + employeeId + "의 출결 상태: " + attendanceService.getAttendanceType(tmp.getAd_at_num()) + " / 출근시간 : " + dbAtRecord.getAr_st_time_str() + " / 퇴근 시간 : " + dbAtRecord.getAr_end_time_str());
+        		return;
+        	}
+        	System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " 직원 ID " + employeeId + "의 출결 상태: " + attendanceService.getAttendanceType(tmp.getAd_at_num()));        	
+        }
     }
 
     private void changeAttendance() {
-        Scanner sc = new Scanner(System.in);
         System.out.print("직원 ID를 입력하세요: ");
-        int employeeId = sc.nextInt();
-        sc.nextLine();
+        String employeeId = sc.next();
+        List<AttendanceVO> dbAtList = attendanceService.viewAttendance(employeeId);
+        for(AttendanceVO tmp : dbAtList) {
+        	if(tmp.getAd_at_num() == 2) {
+        		AttendanceRecordVO dbAtRecord = attendanceService.viewAttendanceRecord(tmp.getAd_num());
+        		System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " 직원 ID " + employeeId + "의 출결 상태: " + attendanceService.getAttendanceType(tmp.getAd_at_num()) + " / 출근시간 : " + dbAtRecord.getAr_st_time_str() + " / 퇴근 시간 : " + dbAtRecord.getAr_end_time_str());
+        		break;
+        	}
+        	System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " 직원 ID " + employeeId + "의 출결 상태: " + attendanceService.getAttendanceType(tmp.getAd_at_num()));        	
+        }
+        System.out.print("변경할 직원의 출결 기록 번호를 입력하세요: ");
+        int ad_num = sc.nextInt();
+        System.out.println("출결 변경 종류");
+        printAttendanceMenu();
+        int at_num = sc.nextInt();
 
-        System.out.print("변경할 출결 상태를 입력하세요: ");
-        String newStatus = sc.nextLine();
-
-        attendanceService.changeAttendance(employeeId, newStatus);
+        attendanceService.changeAttendance(ad_num, at_num);
         System.out.println("출결 상태가 변경되었습니다.");
     }
-
-    private void applyLeave() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("직원 ID를 입력하세요: ");
-        int employeeId = sc.nextInt();
-        sc.nextLine();
-
-        System.out.print("휴가 타입을 입력하세요: ");
-        String leaveType = sc.nextLine();
-
-        System.out.print("휴가 시작일을 입력하세요 (yyyy-MM-dd): ");
-        String startDate = sc.nextLine();
-
-        System.out.print("휴가 종료일을 입력하세요 (yyyy-MM-dd): ");
-        String endDate = sc.nextLine();
-
-        attendanceService.applyLeave(employeeId, leaveType, startDate, endDate);
-        System.out.println("휴가 신청이 완료되었습니다.");
-    }
-
-    private void viewLeave() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("직원 ID를 입력하세요: ");
-        int employeeId = sc.nextInt();
-
-        String leaveStatus = attendanceService.viewLeave(employeeId);
-
-        System.out.println("직원 ID " + employeeId + "의 휴가 상태: " + leaveStatus);
-    }
-
 }

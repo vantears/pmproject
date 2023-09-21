@@ -51,4 +51,7 @@
  	<select id="selectMemberCount" resultType="int">
  		select count(*) from employee
  	</select>
+ 	<select id="selectMemberList">
+ 		select * from employee
+ 	</select>
  </mapper>
