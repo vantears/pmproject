@@ -27,9 +27,7 @@ DROP TABLE IF EXISTS `at_record`;
 CREATE TABLE `at_record` (
   `ar_ad_num` int NOT NULL,
   `ar_st_time` time DEFAULT NULL,
-  `ar_end_time` time DEFAULT NULL,
-  KEY `FK_attendance_TO_at_record_1` (`ar_ad_num`),
-  CONSTRAINT `FK_attendance_TO_at_record_1` FOREIGN KEY (`ar_ad_num`) REFERENCES `attendance` (`ad_num`)
+  `ar_end_time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,6 +37,7 @@ CREATE TABLE `at_record` (
 
 LOCK TABLES `at_record` WRITE;
 /*!40000 ALTER TABLE `at_record` DISABLE KEYS */;
+INSERT INTO `at_record` VALUES (1,'17:44:00',NULL),(5,'09:27:03',NULL);
 /*!40000 ALTER TABLE `at_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +58,7 @@ CREATE TABLE `attendance` (
   KEY `FK_employee_TO_attendance_1` (`ad_ep_id`),
   CONSTRAINT `FK_attendance_type_TO_attendance_1` FOREIGN KEY (`ad_at_num`) REFERENCES `attendance_type` (`at_num`),
   CONSTRAINT `FK_employee_TO_attendance_1` FOREIGN KEY (`ad_ep_id`) REFERENCES `employee` (`ep_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +67,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
+INSERT INTO `attendance` VALUES (1,'2023-09-21','PM00001',2),(2,'2023-09-21','PM00002',1),(3,'2023-09-21','PM00003',1),(4,'2023-09-21','PM00004',1),(5,'2023-09-22','PM00001',2),(6,'2023-09-22','PM00002',1),(7,'2023-09-22','PM00003',1),(8,'2023-09-22','PM00004',1),(9,'2023-09-22','PM00005',1);
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `attendance_type` (
 
 LOCK TABLES `attendance_type` WRITE;
 /*!40000 ALTER TABLE `attendance_type` DISABLE KEYS */;
-INSERT INTO `attendance_type` VALUES (1,'결근'),(2,'출근'),(3,'재택'),(4,'출장'),(5,'조퇴');
+INSERT INTO `attendance_type` VALUES (1,'결근'),(2,'출근'),(3,'재택'),(4,'출장');
 /*!40000 ALTER TABLE `attendance_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES ('PM00001','aaa','aaa','010-5888-5888',5,1,1,15,650),('PM00002','박나래','narae@pmcompany.co.kr','010-1235-1235',1,1,2,0,0);
+INSERT INTO `employee` VALUES ('PM00001','aaa','aaa','010-5888-5888',5,1,1,15,650),('PM00002','박나래','narae@pmcompany.co.kr','010-1235-1235',1,1,2,0,0),('PM00003','김동동','ddong@pjcompany.com','010-5555-5555',1,1,1,15,500),('PM00004','김김김','kim@kim.com','010-4444-4444',1,1,1,15,500),('PM00005','홍대병','hongdae@pjcompany.com','010-8877-8877',1,1,1,15,500);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +255,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'종료 프로젝트1','2022-09-06','2023-03-21','종료'),(2,'종료 프로젝트2','2022-11-12','2023-06-30','종료'),(3,'진행 프로젝트1','2023-04-07',NULL,'진행'),(4,'진행 프로젝트2','2023-08-02',NULL,'진행'),(5,'예정 프로젝트1',NULL,NULL,'예정'),(6,'예정 프로젝트4-1','2023-10-16','2023-12-31','예정');
+INSERT INTO `project` VALUES (1,'종료 프로젝트1','2022-09-06','2023-03-21','종료'),(2,'종료 프로젝트2','2022-11-12','2023-06-30','종료'),(3,'진행 프로젝트1','2023-04-07',NULL,'진행'),(4,'진행 프로젝트2','2023-08-02',NULL,'진행'),(5,'종료 프로젝트3','2023-09-21','2023-09-21','종료'),(6,'예정 프로젝트4-1','2023-10-16','2023-12-31','예정');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +276,7 @@ CREATE TABLE `project_info` (
   KEY `FK_project_TO_project_info_1` (`pi_pj_num`),
   CONSTRAINT `FK_employee_TO_project_info_1` FOREIGN KEY (`pi_ep_id`) REFERENCES `employee` (`ep_id`),
   CONSTRAINT `FK_project_TO_project_info_1` FOREIGN KEY (`pi_pj_num`) REFERENCES `project` (`pj_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,7 +307,7 @@ CREATE TABLE `salaryhistory` (
   KEY `FK_pay_TO_salaryHistory_1` (`sh_pa_type`),
   CONSTRAINT `FK_employee_TO_salaryHistory_1` FOREIGN KEY (`sh_ep_id`) REFERENCES `employee` (`ep_id`),
   CONSTRAINT `FK_pay_TO_salaryHistory_1` FOREIGN KEY (`sh_pa_type`) REFERENCES `pay` (`pa_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,6 +316,7 @@ CREATE TABLE `salaryhistory` (
 
 LOCK TABLES `salaryhistory` WRITE;
 /*!40000 ALTER TABLE `salaryhistory` DISABLE KEYS */;
+INSERT INTO `salaryhistory` VALUES (2,'2023-09-15','PM00001','유급 휴가','9월 유급 휴가',25);
 /*!40000 ALTER TABLE `salaryhistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,4 +412,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-15 17:28:52
+-- Dump completed on 2023-09-22 10:20:08
