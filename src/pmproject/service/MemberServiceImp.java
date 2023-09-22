@@ -2,6 +2,9 @@ package pmproject.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -9,7 +12,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import pmproject.dao.AttendanceDAO;
 import pmproject.dao.MemberDAO;
+import pmproject.vo.AttendanceVO;
 import pmproject.vo.DeptVO;
 import pmproject.vo.MemberVO;
 import pmproject.vo.SalaryHistoryVO;
@@ -19,6 +24,7 @@ import pmproject.vo.TransferVO;
 public class MemberServiceImp implements MemberService{
 	
 	private MemberDAO memberDao;
+	private AttendanceDAO attendanceDao;
 	private final String MYBATIS_CONFIG_PATH = "pmproject/config/mybatis-config.xml";
 	
 	public MemberServiceImp() {
@@ -28,6 +34,7 @@ public class MemberServiceImp implements MemberService{
 			//true의 역할 : 쿼리(insert, update,delete) 실행 후 자동 커밋되게 해줌
 			SqlSession session = sf.openSession(true);
 			memberDao = session.getMapper(MemberDAO.class);
+			attendanceDao = session.getMapper(AttendanceDAO.class);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -40,7 +47,13 @@ public class MemberServiceImp implements MemberService{
 		}
 		MemberVO dbMember = memberDao.selectMemberPhone(member.getEp_phone_num());
 		if(dbMember == null) {
-			memberDao.insertMember(member);			
+			memberDao.insertMember(member);
+			LocalDate nowDate = LocalDate.now();
+			String formattedDateTime = nowDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			List<AttendanceVO> dbAtList = attendanceDao.selectAllAttendance2(formattedDateTime);
+			if(dbAtList != null ) {
+				attendanceDao.insertAttendance(member.getEp_id(), formattedDateTime);
+			}
 			return true;
 		}
 		return false;

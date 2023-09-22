@@ -18,4 +18,5 @@ public interface AttendanceService {
 	List<AttendanceVO> checkAttendanceDate(String formattedDateTime);
 	List<MemberVO> getAllMember();
 	AttendanceVO getAttendance(String employeeId, String formattedDateTime);
+	List<AttendanceVO> viewAllAttendance(String date);
 }

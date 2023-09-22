@@ -154,4 +154,12 @@ public class AttendanceServiceImp implements AttendanceService {
 		return attendanceDao.selectAttendance(employeeId, formattedDateTime);
 	}
 
+	@Override
+	public List<AttendanceVO> viewAllAttendance(String date) {
+		if(date == null) {
+			return null;
+		}
+		return attendanceDao.selectAllAttendance2(date);
+	}
+
 }
