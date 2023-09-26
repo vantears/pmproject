@@ -10,10 +10,10 @@
   		select * from termination where tm_ep_id = #{ep_id}
  	 </select>
  	 <update id="updateTimeoff">
-    update termination
+        update termination
 	    set
 	    tm_date = #{dbTimeoff.tm_date},
-	    tm_reason = #{dbTimeoff.tm_reason},
+	    tm_reason = #{dbTimeoff.tm_reason}
 	    where tm_num = #{dbTimeoff.tm_num}
 	</update>
   	<insert id="insertTimeoff">
