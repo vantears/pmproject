@@ -15,7 +15,7 @@ public class Project_infoVO {
 	private String pi_role;
 	@Override
 	public String toString() {
-		return "Á÷¿øID : " + pi_ep_id + ", ¿ªÇÒ : " + pi_role;
+		return "ì§ì› ID : " + pi_ep_id + ", ì—­í•  : " + pi_role;
 	}
 	public Project_infoVO(String id, int num, String role) {
 		this.pi_ep_id = id;

@@ -31,12 +31,12 @@ public class ProjectController {
 
 	private void printMenu() {
 		System.out.println("");
-		System.out.println("=====ÇÁ·ÎÁ§Æ®=====");
-		System.out.println("1. ÇÁ·ÎÁ§Æ® Á¤º¸¸Ş´º");
-		System.out.println("2. ÇÁ·ÎÁ§Æ® Á÷¿ø¸Ş´º");
-		System.out.println("3. ÀÌÀü ¸Ş´º");
+		System.out.println("=====í”„ë¡œì íŠ¸=====");
+		System.out.println("1. í”„ë¡œì íŠ¸ ì •ë³´ë©”ë‰´");
+		System.out.println("2. í”„ë¡œì íŠ¸ ì§ì›ë©”ë‰´");
+		System.out.println("3. ì´ì „ ë©”ë‰´");
 		System.out.println("=================");
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 		
 	}
 
@@ -49,25 +49,25 @@ public class ProjectController {
 			projectMenu2();
 			break;
 		case 3:
-			System.out.println("[ÀÌÀü¸Ş´º·Î ÀÌµ¿]");
+			System.out.println("[ì´ì „ë©”ë‰´ë¡œ ì´ë™]");
 			break;
 		default:
-			System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ!]");
+			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ!]");
 		}
 		
 	}
 	
 	private void projectMenu1() {
 		System.out.println("");
-		System.out.println("=====ÇÁ·ÎÁ§Æ®=====");
-		System.out.println("1. ÇÁ·ÎÁ§Æ® Á¤º¸Á¶È¸");
-		System.out.println("2. ÇÁ·ÎÁ§Æ® Á¤º¸Ãß°¡");
-		System.out.println("3. ÇÁ·ÎÁ§Æ® Á¤º¸¼öÁ¤");
-		//ÇÁ·ÎÁ§Æ® ÀÎ¿ø °Ë»ö
-		//Á¶È¸,Ãß°¡,¼öÁ¤
-		System.out.println("4. ÀÌÀü ¸Ş´º");
+		System.out.println("=====í”„ë¡œì íŠ¸=====");
+		System.out.println("1. í”„ë¡œì íŠ¸ ì •ë³´ì¡°íšŒ");
+		System.out.println("2. í”„ë¡œì íŠ¸ ì •ë³´ì¶”ê°€");
+		System.out.println("3. í”„ë¡œì íŠ¸ ì •ë³´ìˆ˜ì •");
+		//í”„ë¡œì íŠ¸ ì¸ì› ê²€ìƒ‰
+		//ì¡°íšŒ,ì¶”ê°€,ìˆ˜ì •
+		System.out.println("4. ì´ì „ ë©”ë‰´");
 		System.out.println("=================");
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 		int pjMenu = sc.nextInt();
 		
 		switch(pjMenu) {
@@ -81,10 +81,10 @@ public class ProjectController {
 			projectInfoModify();
 			break;
 		case 4:
-			System.out.println("[ÀÌÀü¸Ş´º·Î ÀÌµ¿]");
+			System.out.println("[ì´ì „ë©”ë‰´ë¡œ ì´ë™]");
 			break;
 		default:
-			System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ!]");
+			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ!]");
 		}
 	}
 	
@@ -94,25 +94,25 @@ public class ProjectController {
 			System.out.println(tmp);
 		}
 		
-		System.out.print("±âÁ¸ ÇÁ·ÎÁ§Æ® ¸í : ");
+		System.out.print("ê¸°ì¡´ í”„ë¡œì íŠ¸ ëª… : ");
 		sc.nextLine();
 		String name = sc.nextLine();
 		ProjectVO dbProject = projectService.selectProject(name);
 		if(dbProject == null) {
 			System.out.println("");
-			System.out.println("[Á¸ÀçÇÏÁö ¾Ê´Â ÇÁ·ÎÁ§Æ®]");
+			System.out.println("[ì¡´ì¬í•˜ì§€ ì•ŠëŠ” í”„ë¡œì íŠ¸]");
 			System.out.println("");
 		}else {
 			System.out.println("=====================================");
-			System.out.println("¼öÁ¤ÇÒ °ªÀ» ³Ö¾îÁÖ¼¼¿ä - º¯°æ ³»¿ëÀÌ ¾øÀ» ½Ã ¿£ÅÍ");
+			System.out.println("ìˆ˜ì •í•  ê°’ì„ ë„£ì–´ì£¼ì„¸ìš” - ë³€ê²½ ë‚´ìš©ì´ ì—†ì„ ì‹œ ì—”í„°");
 			System.out.println("=====================================");
-			System.out.print("ÇÁ·ÎÁ§Æ® ¸í : ");
+			System.out.print("í”„ë¡œì íŠ¸ ëª… : ");
 			String newName = sc.nextLine();
-			System.out.print("½ÃÀÛÀÏ : ");
+			System.out.print("ì‹œì‘ì¼ : ");
 			String newStart_date = sc.nextLine();
-			System.out.print("Á¾·áÀÏ : ");
+			System.out.print("ì¢…ë£Œì¼ : ");
 			String newEnd_date = sc.nextLine();
-			System.out.print("»óÅÂ : ");
+			System.out.print("ìƒíƒœ : ");
 			String newState = sc.nextLine();
 			
 			
@@ -125,12 +125,12 @@ public class ProjectController {
 			if(newState != "") {
 				projectService.updateState(name, newState);
 			}
-			//ÀÌ°Ô °¡Àå ¾Æ·¡ ÀÖ¾î¾ß À§ Á¶°Ç½ÄÀÌ ÀÛµ¿ÇÔ > ÇÁ·ÎÁ§Æ®¸íÀÌ ¹Ù²î¸é ÀÛµ¿ÇÏÁö ¾Ê±â ¶§¹®
+			//ì´ê²Œ ê°€ì¥ ì•„ë˜ ìˆì–´ì•¼ ìœ„ ì¡°ê±´ì‹ì´ ì‘ë™í•¨ > í”„ë¡œì íŠ¸ëª…ì´ ë°”ë€Œë©´ ì‘ë™í•˜ì§€ ì•Šê¸° ë•Œë¬¸
 			if(newName != "") {
 				projectService.updateName(name, newName);		
 			}
 			System.out.println("");
-			System.out.println("[Á¤º¸°¡ º¯°æµÇ¾ú½À´Ï´Ù]");
+			System.out.println("[ì •ë³´ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤]");
 			System.out.println("");
 		}
 		
@@ -138,39 +138,39 @@ public class ProjectController {
 
 
 	private void projectInfoAdd() {
-		System.out.print("ÇÁ·ÎÁ§Æ® ¸í : ");
+		System.out.print("í”„ë¡œì íŠ¸ ëª… : ");
 		sc.nextLine();
 		String name = sc.nextLine();
-		System.out.print("½ÃÀÛÀÏ : ");
+		System.out.print("ì‹œì‘ì¼ : ");
 		String start_date = sc.nextLine();
-		System.out.print("Á¾·áÀÏ : ");
+		System.out.print("ì¢…ë£Œì¼ : ");
 		String end_date = sc.nextLine();
 		
 		if(name == "" || (start_date == "" && end_date != "")) {
-			System.out.println("[ÇÁ·ÎÁ§Æ® µî·Ï ½ÇÆĞ]");
+			System.out.println("[í”„ë¡œì íŠ¸ ë“±ë¡ ì‹¤íŒ¨]");
 		}else {
 			if(start_date == "" && end_date == "") {
 				ProjectVO project = new ProjectVO(name);
 				if(projectService.insertProject1(project)) {
-					System.out.println("[ÇÁ·ÎÁ§Æ® µî·Ï ¿Ï·á]");
+					System.out.println("[í”„ë¡œì íŠ¸ ë“±ë¡ ì™„ë£Œ]");
 				}else {
-					System.out.println("[ÇÁ·ÎÁ§Æ® µî·Ï ½ÇÆĞ]");
+					System.out.println("[í”„ë¡œì íŠ¸ ë“±ë¡ ì‹¤íŒ¨]");
 				}
 			}
 			if(start_date != "" && end_date == "") {
 				ProjectVO project = new ProjectVO(name, start_date);
 				if(projectService.insertProject2(project)) {
-					System.out.println("[ÇÁ·ÎÁ§Æ® µî·Ï ¿Ï·á]");
+					System.out.println("[í”„ë¡œì íŠ¸ ë“±ë¡ ì™„ë£Œ]");
 				}else {
-					System.out.println("ÇÁ·ÎÁ§Æ® µî·Ï ½ÇÆĞ]");
+					System.out.println("í”„ë¡œì íŠ¸ ë“±ë¡ ì‹¤íŒ¨]");
 				}
 			}
 			if(start_date != "" && end_date != "") {
 				ProjectVO project = new ProjectVO(name, start_date, end_date);
 				if(projectService.insertProject3(project)) {
-					System.out.println("[ÇÁ·ÎÁ§Æ® µî·Ï ¿Ï·á]");
+					System.out.println("[í”„ë¡œì íŠ¸ ë“±ë¡ ì™„ë£Œ]");
 				}else {
-					System.out.println("[ÇÁ·ÎÁ§Æ® µî·Ï ½ÇÆĞ]");
+					System.out.println("[í”„ë¡œì íŠ¸ ë“±ë¡ ì‹¤íŒ¨]");
 				}
 			}
 		}
@@ -178,14 +178,14 @@ public class ProjectController {
 
 	private void projectInfoSearch() {
 		System.out.println("");
-		System.out.println("=======Á¶È¸=======");
-		System.out.println("1. ÇÁ·ÎÁ§Æ® ÀüÃ¼Á¶È¸");
-		System.out.println("2. ÁøÇàÁßÀÎ ÇÁ·ÎÁ§Æ®");
-		System.out.println("3. ¿¹Á¤ÁßÀÎ ÇÁ·ÎÁ§Æ®");
-		System.out.println("4. Á¾·áµÈ ÇÁ·ÎÁ§Æ®");
-		System.out.println("5. ÀÌÀü ¸Ş´º");
+		System.out.println("=======ì¡°íšŒ=======");
+		System.out.println("1. í”„ë¡œì íŠ¸ ì „ì²´ì¡°íšŒ");
+		System.out.println("2. ì§„í–‰ì¤‘ì¸ í”„ë¡œì íŠ¸");
+		System.out.println("3. ì˜ˆì •ì¤‘ì¸ í”„ë¡œì íŠ¸");
+		System.out.println("4. ì¢…ë£Œëœ í”„ë¡œì íŠ¸");
+		System.out.println("5. ì´ì „ ë©”ë‰´");
 		System.out.println("=================");
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 		int pjSearchMenu = sc.nextInt();
 		
 		switch (pjSearchMenu) {
@@ -202,17 +202,17 @@ public class ProjectController {
 			projectDone();
 			break;
 		case 5:
-			System.out.println("[ÀÌÀü¸Ş´º·Î ÀÌµ¿]");
+			System.out.println("[ì´ì „ë©”ë‰´ë¡œ ì´ë™]");
 			break;
 		default:
-			System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ!]");
+			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ!]");
 		}
 	}
 
 
 	private void projectAll() {
 		System.out.println("");
-		System.out.println("ÀüÃ¼ ÇÁ·ÎÁ§Æ®");
+		System.out.println("ì „ì²´ í”„ë¡œì íŠ¸");
 		List<ProjectVO> projectList = projectService.getPjAll();
 		for(ProjectVO tmp : projectList) {
 			System.out.println(tmp);
@@ -222,7 +222,7 @@ public class ProjectController {
 
 	private void projectDone() {
 		System.out.println("");
-		System.out.println("Á¾·áµÈ ÇÁ·ÎÁ§Æ®");
+		System.out.println("ì¢…ë£Œëœ í”„ë¡œì íŠ¸");
 		List<ProjectVO> projectList = projectService.getPjDone();
 		for(ProjectVO tmp : projectList) {
 			System.out.println(tmp);
@@ -232,7 +232,7 @@ public class ProjectController {
 
 	private void projectSoon() {
 		System.out.println("");
-		System.out.println("¿¹Á¤ÁßÀÎ ÇÁ·ÎÁ§Æ®");
+		System.out.println("ì˜ˆì •ì¤‘ì¸ í”„ë¡œì íŠ¸");
 		List<ProjectVO> projectList = projectService.getPjSoon();
 		for(ProjectVO tmp : projectList) {
 			System.out.println(tmp);
@@ -242,7 +242,7 @@ public class ProjectController {
 
 	private void projectNow() {
 		System.out.println("");
-		System.out.println("ÁøÇàÁßÀÎ ÇÁ·ÎÁ§Æ®");
+		System.out.println("ì§„í–‰ì¤‘ì¸ í”„ë¡œì íŠ¸");
 		List<ProjectVO> projectList = projectService.getPjNow();
 		for(ProjectVO tmp : projectList) {
 			System.out.println(tmp);
@@ -250,19 +250,19 @@ public class ProjectController {
 	}
 	
 	
-	//=============================ÇÁ·ÎÁ§Æ® ÀÎ¿ø===================================================
+	//=============================í”„ë¡œì íŠ¸ ì¸ì›===================================================
 	
 	
 	private void projectMenu2() {
 		System.out.println("");
-		System.out.println("=====ÇÁ·ÎÁ§Æ®=====");
-		System.out.println("1. ÇÁ·ÎÁ§Æ® Á÷¿øÁ¶È¸");
-		System.out.println("2. ÇÁ·ÎÁ§Æ® Á÷¿øÃß°¡");
-		System.out.println("3. ÇÁ·ÎÁ§Æ® Á÷¿ø¼öÁ¤");
-		System.out.println("4. ÇÁ·ÎÁ§Æ® Á÷¿ø»èÁ¦");
-		System.out.println("5. ÀÌÀü ¸Ş´º");
+		System.out.println("=====í”„ë¡œì íŠ¸=====");
+		System.out.println("1. í”„ë¡œì íŠ¸ ì§ì›ì¡°íšŒ");
+		System.out.println("2. í”„ë¡œì íŠ¸ ì§ì›ì¶”ê°€");
+		System.out.println("3. í”„ë¡œì íŠ¸ ì§ì›ìˆ˜ì •");
+		System.out.println("4. í”„ë¡œì íŠ¸ ì§ì›ì‚­ì œ");
+		System.out.println("5. ì´ì „ ë©”ë‰´");
 		System.out.println("=================");
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 		int pjMenu = sc.nextInt();
 		
 		switch(pjMenu) {
@@ -279,10 +279,10 @@ public class ProjectController {
 			projectEmpDelete();
 			break;
 		case 5:
-			System.out.println("[ÀÌÀü¸Ş´º·Î ÀÌµ¿]");
+			System.out.println("[ì´ì „ë©”ë‰´ë¡œ ì´ë™]");
 			break;
 		default:
-			System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ!]");
+			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ!]");
 		}
 	}
 	
@@ -290,15 +290,15 @@ public class ProjectController {
 
 
 	private void projectEmpDelete() {
-		System.out.print("Á÷¿øID : ");
+		System.out.print("ì§ì›ID : ");
 		sc.nextLine();
 		String id = sc.nextLine();
 		int num = 0;
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		}else {
 			System.out.println("");
-			System.out.println("[Âü¿©ÇÑ ÇÁ·ÎÁ§Æ®]");
+			System.out.println("[ì°¸ì—¬í•œ í”„ë¡œì íŠ¸]");
 			List<Project_infoVO> infoList = projectService.getPjAllEmp2();
 			for(Project_infoVO tmp1 : infoList) {
 				if(tmp1.getPi_ep_id().equals(id)){
@@ -309,26 +309,26 @@ public class ProjectController {
 							System.out.println(tmp);
 						}
 					}
-					System.out.print("µî·Ï¹øÈ£ : " + tmp1.getPi_num() + ", ");
+					System.out.print("ë“±ë¡ë²ˆí˜¸ : " + tmp1.getPi_num() + ", ");
 					List<MemberVO> memberList = memberService.getMemberList();
 					for(MemberVO tmp2 : memberList) {
 						if(tmp2.getEp_id().equals(tmp1.getPi_ep_id())) {
-							System.out.print("Á÷¿øÀÌ¸§ : " + tmp2.getEp_name() + ", ");
+							System.out.print("ì§ì›ì´ë¦„ : " + tmp2.getEp_name() + ", ");
 						}
 					}
 					System.out.println(tmp1);
 				}
 			}
-			System.out.print("»èÁ¦ÇÒ µî·Ï¹øÈ£ : ");
+			System.out.print("ì‚­ì œí•  ë“±ë¡ë²ˆí˜¸ : ");
 			int piNum = sc.nextInt();
 			Project_infoVO dbProject_info = projectService.selectProject_info(piNum);
 			if(dbProject_info == null) {
 				System.out.println("");
-				System.out.println("[Á¸ÀçÇÏÁö ¾Ê´Â µî·Ï¹øÈ£]");
+				System.out.println("[ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë“±ë¡ë²ˆí˜¸]");
 				System.out.println("");
 			}else {
 				projectService.deleteProject_info(piNum);
-				System.out.println("[Á¤º¸°¡ »èÁ¦µÇ¾ú½À´Ï´Ù]");
+				System.out.println("[ì •ë³´ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤]");
 			}
 		}
 		
@@ -336,15 +336,15 @@ public class ProjectController {
 
 
 	private void projectEmpModify() {
-		System.out.print("Á÷¿øID : ");
+		System.out.print("ì§ì›ID : ");
 		sc.nextLine();
 		String id = sc.nextLine();
 		int num = 0;
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		}else {
 			System.out.println("");
-			System.out.println("[Âü¿©ÇÑ ÇÁ·ÎÁ§Æ®]");
+			System.out.println("[ì°¸ì—¬í•œ í”„ë¡œì íŠ¸]");
 			List<Project_infoVO> infoList = projectService.getPjAllEmp2();
 			for(Project_infoVO tmp1 : infoList) {
 				if(tmp1.getPi_ep_id().equals(id)){
@@ -355,32 +355,32 @@ public class ProjectController {
 							System.out.println(tmp);
 						}
 					}
-					System.out.print("µî·Ï¹øÈ£ : " + tmp1.getPi_num() + ", ");
+					System.out.print("ë“±ë¡ë²ˆí˜¸ : " + tmp1.getPi_num() + ", ");
 					List<MemberVO> memberList = memberService.getMemberList();
 					for(MemberVO tmp2 : memberList) {
 						if(tmp2.getEp_id().equals(tmp1.getPi_ep_id())) {
-							System.out.print("Á÷¿øÀÌ¸§ : " + tmp2.getEp_name() + ", ");
+							System.out.print("ì§ì›ì´ë¦„ : " + tmp2.getEp_name() + ", ");
 						}
 					}
 					System.out.println(tmp1);
 				}
 			}
 			System.out.println("");
-			System.out.print("¼öÁ¤ÇÒ µî·Ï¹øÈ£ : ");
+			System.out.print("ìˆ˜ì •í•  ë“±ë¡ë²ˆí˜¸ : ");
 			int piNum = sc.nextInt();
 			Project_infoVO dbProject_info = projectService.selectProject_info(piNum);
 			if(dbProject_info == null) {
 				System.out.println("");
-				System.out.println("[Á¸ÀçÇÏÁö ¾Ê´Â µî·Ï¹øÈ£]");
+				System.out.println("[ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë“±ë¡ë²ˆí˜¸]");
 				System.out.println("");
 			}else {
 				System.out.println("=====================================");
-				System.out.println("¼öÁ¤ÇÒ °ªÀ» ³Ö¾îÁÖ¼¼¿ä - º¯°æ ³»¿ëÀÌ ¾øÀ» ½Ã ¿£ÅÍ");
+				System.out.println("ìˆ˜ì •í•  ê°’ì„ ë„£ì–´ì£¼ì„¸ìš” - ë³€ê²½ ë‚´ìš©ì´ ì—†ì„ ì‹œ ì—”í„°");
 				System.out.println("=====================================");
-				System.out.print("ÇÁ·ÎÁ§Æ® ¹øÈ£ : ");
+				System.out.print("í”„ë¡œì íŠ¸ ë²ˆí˜¸ : ");
 				sc.nextLine();
 				String newPjNum = sc.nextLine();
-				System.out.print("¿ªÇÒ : ");
+				System.out.print("ì—­í•  : ");
 				String newRole = sc.nextLine();
 				
 				if(newRole != "") {
@@ -390,14 +390,14 @@ public class ProjectController {
 					int iv = Integer.parseInt(newPjNum);
 					ProjectVO dbProject = projectService.selectProject(iv);
 					if(dbProject == null) {
-						System.out.println("[Á¸ÀçÇÏÁö ¾Ê´Â ÇÁ·ÎÁ§Æ®]");
+						System.out.println("[ì¡´ì¬í•˜ì§€ ì•ŠëŠ” í”„ë¡œì íŠ¸]");
 						return;
 					}else {
 						projectService.updatePjNum(piNum, iv);
 					}
 				}
 				System.out.println("");
-				System.out.println("[Á¤º¸°¡ º¯°æµÇ¾ú½À´Ï´Ù]");
+				System.out.println("[ì •ë³´ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤]");
 				System.out.println("");
 			}
 		}
@@ -411,23 +411,23 @@ public class ProjectController {
 			System.out.println(tmp);
 		}System.out.println("");
 		
-		System.out.print("Á÷¿øID : ");
+		System.out.print("ì§ì›ID : ");
 		sc.nextLine();
 		String id = sc.nextLine();
-		System.out.print("ÇÁ·ÎÁ§Æ® ¹øÈ£ : ");
+		System.out.print("í”„ë¡œì íŠ¸ ë²ˆí˜¸ : ");
 		int num = sc.nextInt();
-		System.out.print("Á÷¿ø¿ªÇÒ : ");
+		System.out.print("ì§ì›ì—­í•  : ");
 		sc.nextLine();
 		String role = sc.nextLine();
 		
 		if(id == "" || num == 0 || role == "") {
-			System.out.println("[Àß¸ø ÀÔ·ÂÇß½À´Ï´Ù]");
+			System.out.println("[ì˜ëª» ì…ë ¥í–ˆìŠµë‹ˆë‹¤]");
 		}else {
 			Project_infoVO project_info = new Project_infoVO(id, num, role);
 			if(projectService.insertProject_info(project_info)) {
-				System.out.println("[ÇÁ·ÎÁ§Æ® µî·Ï ¿Ï·á]");
+				System.out.println("[í”„ë¡œì íŠ¸ ë“±ë¡ ì™„ë£Œ]");
 			}else {
-				System.out.println("[ÇÁ·ÎÁ§Æ® µî·Ï ½ÇÆĞ]");
+				System.out.println("[í”„ë¡œì íŠ¸ ë“±ë¡ ì‹¤íŒ¨]");
 			}
 		}
 		
@@ -436,13 +436,13 @@ public class ProjectController {
 
 	private void projectEmpSearch() {
 		System.out.println("");
-		System.out.println("=======Á¶È¸=======");
-		System.out.println("1. ÇÁ·ÎÁ§Æ® Á÷¿ø ÀüÃ¼Á¶È¸");
-		System.out.println("2. ÇÁ·ÎÁ§Æ® ¹øÈ£ Á¶È¸ ");
-		System.out.println("3. ÇÁ·ÎÁ§Æ® Á÷¿øID Á¶È¸");
-		System.out.println("4. ÀÌÀü ¸Ş´º");
+		System.out.println("=======ì¡°íšŒ=======");
+		System.out.println("1. í”„ë¡œì íŠ¸ ì§ì› ì „ì²´ì¡°íšŒ");
+		System.out.println("2. í”„ë¡œì íŠ¸ ë²ˆí˜¸ ì¡°íšŒ ");
+		System.out.println("3. í”„ë¡œì íŠ¸ ì§ì›ID ì¡°íšŒ");
+		System.out.println("4. ì´ì „ ë©”ë‰´");
 		System.out.println("=================");
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 		int pjSearchMenu = sc.nextInt();
 		
 		switch (pjSearchMenu) {
@@ -456,10 +456,10 @@ public class ProjectController {
 			projectIdEmp();
 			break;
 		case 4: 
-			System.out.println("[ÀÌÀü¸Ş´º·Î ÀÌµ¿]");
+			System.out.println("[ì´ì „ë©”ë‰´ë¡œ ì´ë™]");
 			break;
 		default:
-			System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ!]");
+			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ!]");
 		}
 		
 	}
@@ -480,7 +480,7 @@ public class ProjectController {
 			}
 			for(MemberVO tmp2 : memberList) {
 				if(tmp2.getEp_id().equals(tmp1.getPi_ep_id())) {
-					System.out.print("Á÷¿øÀÌ¸§ : " + tmp2.getEp_name() + ", ");
+					System.out.print("ì§ì›ì´ë¦„ : " + tmp2.getEp_name() + ", ");
 				}
 			}
 			System.out.println(tmp1);
@@ -493,11 +493,11 @@ public class ProjectController {
 			System.out.println(tmp);
 		}System.out.println("");
 		
-		System.out.print("ÇÁ·ÎÁ§Æ® ¹øÈ£ : ");
+		System.out.print("í”„ë¡œì íŠ¸ ë²ˆí˜¸ : ");
 		int num = sc.nextInt();
 		ProjectVO dbProject = projectService.selectProject(num);
 		if(dbProject == null) {
-			System.out.println("[Á¸ÀçÇÏÁö¾Ê´Â ÇÁ·ÎÁ§Æ®]");
+			System.out.println("[ì¡´ì¬í•˜ì§€ì•ŠëŠ” í”„ë¡œì íŠ¸]");
 		}else {
 			List<ProjectVO> List = projectService.getPjAllEmp1();
 			List<Project_infoVO> infoList = projectService.getPjAllEmp2();
@@ -512,7 +512,7 @@ public class ProjectController {
 				if(tmp1.getPi_pj_num() == num) {
 					for(MemberVO tmp2 : memberList) {
 						if(tmp2.getEp_id().equals(tmp1.getPi_ep_id())) {
-							System.out.print("Á÷¿øÀÌ¸§ : " + tmp2.getEp_name() + ", ");
+							System.out.print("ì§ì›ì´ë¦„ : " + tmp2.getEp_name() + ", ");
 						}
 					}
 					System.out.println(tmp1);
@@ -523,15 +523,15 @@ public class ProjectController {
 	}
 
 	private void projectIdEmp() {
-		System.out.print("Á÷¿øID : ");
+		System.out.print("ì§ì›ID : ");
 		sc.nextLine();
 		String id = sc.nextLine();
 		int num = 0;
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		}else {
 			System.out.println("");
-			System.out.println("[Âü¿©ÇÑ ÇÁ·ÎÁ§Æ®]");
+			System.out.println("[ì°¸ì—¬í•œ í”„ë¡œì íŠ¸]");
 			List<Project_infoVO> infoList = projectService.getPjAllEmp2();
 			List<MemberVO> memberList = memberService.getMemberList();
 			for(Project_infoVO tmp1 : infoList) {
@@ -545,7 +545,7 @@ public class ProjectController {
 					}
 					for(MemberVO tmp2 : memberList) {
 						if(tmp2.getEp_id().equals(tmp1.getPi_ep_id())) {
-							System.out.print("Á÷¿øÀÌ¸§ : " + tmp2.getEp_name() + ", ");
+							System.out.print("ì§ì›ì´ë¦„ : " + tmp2.getEp_name() + ", ");
 						}
 					}
 					System.out.println(tmp1);

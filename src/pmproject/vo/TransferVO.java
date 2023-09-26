@@ -13,7 +13,7 @@ public class TransferVO {
 	private int tr_dm_num;
 	
 	public String toString() {
-		return "[ÀÌµ¿ÀÏ : " + getTr_date_str() + " / " + "ÀÌµ¿»çÀ¯ : " + tr_reason + " / " + "ÀÌµ¿ÇÑ ºÎ¼­ : " + tr_dept + "]"; 
+		return "[ì´ë™ì¼ : " + getTr_date_str() + " / " + "ì´ë™ì‚¬ìœ  : " + tr_reason + " / " + "ì´ë™í•œ ë¶€ì„œ : " + tr_dept + "]"; 
 	}
 	
 	public String getTr_date_str() {

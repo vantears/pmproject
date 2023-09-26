@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import pmproject.dao.AttendanceDAO;
 import pmproject.service.AttendanceService;
 import pmproject.service.AttendanceServiceImp;
 import pmproject.service.MemberService;
@@ -43,16 +42,16 @@ public class AttendanceController {
                     changeAttendance();
                     break;
                 case EXIT:
-                    System.out.println("[Ãâ°á °ü¸® Á¾·á]");
+                    System.out.println("[ì¶œê²° ê´€ë¦¬ ì¢…ë£Œ]");
                     break;
                 default:
-                    System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ]");
+                    System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ]");
             }
         } while (menu != EXIT);
     }
 
     private void viewAllAttendance() {
-    	 System.out.print("Á¶È¸ÇÒ ³¯Â¥ ÀÔ·Â: ");
+    	 System.out.print("ì¡°íšŒí•  ë‚ ì§œ ì…ë ¥: ");
          String date = sc.next();
 
          List<AttendanceVO> dbAtList = attendanceService.viewAllAttendance(date);
@@ -60,40 +59,40 @@ public class AttendanceController {
         	MemberVO dbMember = memberService.selectMember(tmp.getAd_ep_id());
          	if(tmp.getAd_at_num() == 2) {
          		AttendanceRecordVO dbAtRecord = attendanceService.viewAttendanceRecord(tmp.getAd_num());
-        		System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " Á÷¿ø " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ÀÇ Ãâ°á »óÅÂ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()) + " / Ãâ±Ù½Ã°£ : " + dbAtRecord.getAr_st_time_str() + " / Åğ±Ù ½Ã°£ : " + dbAtRecord.getAr_end_time_str());
+        		System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " ì§ì› " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ì˜ ì¶œê²° ìƒíƒœ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()) + " / ì¶œê·¼ì‹œê°„ : " + dbAtRecord.getAr_st_time_str() + " / í‡´ê·¼ ì‹œê°„ : " + dbAtRecord.getAr_end_time_str());
          		continue;
          	}
-         	System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " Á÷¿ø " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ÀÇ Ãâ°á »óÅÂ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()));        	
+         	System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " ì§ì› " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ì˜ ì¶œê²° ìƒíƒœ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()));        	
          }
 		
 	}
 
 	private void printMenu() {
-        System.out.println("=====Ãâ°á °ü¸® ¸Ş´º=====");
-        System.out.println("1. Á÷¿ø Ãâ°á Ã³¸®");
-        System.out.println("2. Åğ±Ù Ã³¸®");
-        System.out.println("3. Á÷¿ø Ãâ°á Á¶È¸");
-        System.out.println("4. ³¯Â¥º° Ãâ°á ÀüÃ¼ Á¶È¸");
-        System.out.println("5. Ãâ°á º¯°æ");
-        System.out.println("6. ¸Ş´º·Î µ¹¾Æ°¡±â");
+        System.out.println("=====ì¶œê²° ê´€ë¦¬ ë©”ë‰´=====");
+        System.out.println("1. ì§ì› ì¶œê²° ì²˜ë¦¬");
+        System.out.println("2. í‡´ê·¼ ì²˜ë¦¬");
+        System.out.println("3. ì§ì› ì¶œê²° ì¡°íšŒ");
+        System.out.println("4. ë‚ ì§œë³„ ì¶œê²° ì „ì²´ ì¡°íšŒ");
+        System.out.println("5. ì¶œê²° ë³€ê²½");
+        System.out.println("6. ë©”ë‰´ë¡œ ëŒì•„ê°€ê¸°");
         System.out.println("=====================");
-        System.out.print("¸Ş´º ¼±ÅÃ : ");
+        System.out.print("ë©”ë‰´ ì„ íƒ : ");
     }
     
     private void printAttendanceMenu() {
-        System.out.println("1. Ãâ±Ù");
-        System.out.println("2. ÀçÅÃ");
-        System.out.println("3. ÃâÀå");
-        System.out.print("Ãâ°á Á¾·ù ¼±ÅÃ : ");
+        System.out.println("1. ì¶œê·¼");
+        System.out.println("2. ì¬íƒ");
+        System.out.println("3. ì¶œì¥");
+        System.out.print("ì¶œê²° ì¢…ë¥˜ ì„ íƒ : ");
     }
 
     private void recordAttendance() {
     	LocalDate nowDate = LocalDate.now();
 		String formattedDateTime = nowDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        System.out.print("Á÷¿ø ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+        System.out.print("ì§ì› IDë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
         String employeeId = sc.next();
         if(memberService.selectMember(employeeId).getEp_st_num() != 1) {
-			System.out.println("[Åğ»çÇÑ Á÷¿øÀÔ´Ï´Ù.]");
+			System.out.println("[í‡´ì‚¬í•œ ì§ì›ì…ë‹ˆë‹¤.]");
 			return;
 		}
         printAttendanceMenu();
@@ -106,27 +105,27 @@ public class AttendanceController {
     	if(ad_at_num == 1) {
     		AttendanceVO dbAt = attendanceService.getAttendance(employeeId, formattedDateTime);
     		attendanceService.changeAttendance(dbAt.getAd_num(), ad_at_num + 1);
-    		System.out.println("[Ãâ°á µî·Ï ¿Ï·á]");
+    		System.out.println("[ì¶œê²° ë“±ë¡ ì™„ë£Œ]");
     	} else {
     		AttendanceVO dbAt = attendanceService.getAttendance(employeeId, formattedDateTime);
     		attendanceService.changeAttendance(dbAt.getAd_num(), ad_at_num + 1);
-    		System.out.println("[Ãâ°á µî·Ï ¿Ï·á]");
+    		System.out.println("[ì¶œê²° ë“±ë¡ ì™„ë£Œ]");
     	}    		
     }
 
     private void recordLeave() {     
-        System.out.print("Á÷¿ø ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+        System.out.print("ì§ì› IDë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
         String employeeId = sc.next();
 
         if(attendanceService.recordLeave(employeeId)) {
-        	System.out.println("[Åğ±Ù Ã³¸® ¿Ï·á]");
+        	System.out.println("[í‡´ê·¼ ì²˜ë¦¬ ì™„ë£Œ]");
         } else {
-        	System.out.println("[Åğ±Ù Ã³¸® ½ÇÆĞ]");
+        	System.out.println("[í‡´ê·¼ ì²˜ë¦¬ ì‹¤íŒ¨]");
         };
     }
 
     private void viewAttendance() {
-        System.out.print("Á÷¿ø ID ÀÔ·Â: ");
+        System.out.print("ì§ì› ID ì…ë ¥: ");
         String employeeId = sc.next();
 
         List<AttendanceVO> dbAtList = attendanceService.viewAttendance(employeeId);
@@ -134,33 +133,33 @@ public class AttendanceController {
         	MemberVO dbMember = memberService.selectMember(tmp.getAd_ep_id());
         	if(tmp.getAd_at_num() == 2) {
         		AttendanceRecordVO dbAtRecord = attendanceService.viewAttendanceRecord(tmp.getAd_num());
-        		System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " Á÷¿ø " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ÀÇ Ãâ°á »óÅÂ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()) + " / Ãâ±Ù½Ã°£ : " + dbAtRecord.getAr_st_time_str() + " / Åğ±Ù ½Ã°£ : " + dbAtRecord.getAr_end_time_str());
+        		System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " ì§ì› " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ì˜ ì¶œê²° ìƒíƒœ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()) + " / ì¶œê·¼ì‹œê°„ : " + dbAtRecord.getAr_st_time_str() + " / í‡´ê·¼ ì‹œê°„ : " + dbAtRecord.getAr_end_time_str());
         		continue;
         	}
-        	System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " Á÷¿ø " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ÀÇ Ãâ°á »óÅÂ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()));        	
+        	System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " ì§ì› " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ì˜ ì¶œê²° ìƒíƒœ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()));        	
         }
     }
 
     private void changeAttendance() {
-        System.out.print("Á÷¿ø ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+        System.out.print("ì§ì› IDë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
         String employeeId = sc.next();
         List<AttendanceVO> dbAtList = attendanceService.viewAttendance(employeeId);
         for(AttendanceVO tmp : dbAtList) {
         	MemberVO dbMember = memberService.selectMember(tmp.getAd_ep_id());
         	if(tmp.getAd_at_num() == 2) {
         		AttendanceRecordVO dbAtRecord = attendanceService.viewAttendanceRecord(tmp.getAd_num());
-        		System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " Á÷¿ø " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ÀÇ Ãâ°á »óÅÂ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()) + " / Ãâ±Ù½Ã°£ : " + dbAtRecord.getAr_st_time_str() + " / Åğ±Ù ½Ã°£ : " + dbAtRecord.getAr_end_time_str());
+        		System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " ì§ì› " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + "ì˜ ì¶œê²° ìƒíƒœ: " + attendanceService.getAttendanceType(tmp.getAd_at_num()) + " / ì¶œê·¼ì‹œê°„ : " + dbAtRecord.getAr_st_time_str() + " / í‡´ê·¼ ì‹œê°„ : " + dbAtRecord.getAr_end_time_str());
         		continue;
         	}
-        	System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " Á÷¿ø " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + attendanceService.getAttendanceType(tmp.getAd_at_num()));        	
+        	System.out.println(tmp.getAd_num() + ". "  + tmp.getAd_date_str() + " ì§ì› " + dbMember.getEp_name() + "(" + tmp.getAd_ep_id() + ")" + attendanceService.getAttendanceType(tmp.getAd_at_num()));        	
         }
-        System.out.print("º¯°æÇÒ Á÷¿øÀÇ Ãâ°á ±â·Ï ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+        System.out.print("ë³€ê²½í•  ì§ì›ì˜ ì¶œê²° ê¸°ë¡ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
         int ad_num = sc.nextInt();
-        System.out.println("Ãâ°á º¯°æ Á¾·ù");
+        System.out.println("ì¶œê²° ë³€ê²½ ì¢…ë¥˜");
         printAttendanceMenu();
         int at_num = sc.nextInt();
 
         attendanceService.changeAttendance(ad_num, at_num);
-        System.out.println("Ãâ°á »óÅÂ°¡ º¯°æµÇ¾ú½À´Ï´Ù.");
+        System.out.println("ì¶œê²° ìƒíƒœê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
     }
 }

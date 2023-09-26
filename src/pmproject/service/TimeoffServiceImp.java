@@ -88,9 +88,9 @@ public class TimeoffServiceImp implements TimeoffService{
 			return;
 		}
 		if(timeoffDao.updateLeave(le_num, le_start_date, le_end_date, le_type)) {
-			System.out.println("[ÈÞ°¡ ¼öÁ¤ ¿Ï·á]");
+			System.out.println("[íœ´ê°€ ìˆ˜ì • ì™„ë£Œ]");
 		} else {
-			System.out.println("[ÈÞ°¡ ¼öÁ¤ ½ÇÆÐ]");
+			System.out.println("[íœ´ê°€ ìˆ˜ì • ì‹¤íŒ¨]");
 		}
 		
 	}	

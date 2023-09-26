@@ -23,10 +23,10 @@ public class LeaveVO {
 	
 	@Override
 	public String toString() {
-		return     "ÈÞ°¡ ¹øÈ£ : " +le_num +"\n"
-				 + "ÈÞ°¡ ½ÃÀÛ ³¯Â¥ : " + le_start_date +"\n"
-		         + "ÈÞ°¡ º¹±Í ³¯Â¥ : " + le_end_date +"\n"
-		         + "ÈÞ°¡ »çÀ¯ : " + le_type +"\n"
-		         + "»ç¹ø : " + le_ep_id + "\n";
+		return     "íœ´ê°€ ë²ˆí˜¸ : " +le_num +"\n"
+				 + "íœ´ê°€ ì‹œìž‘ ë‚ ì§œ : " + le_start_date +"\n"
+		         + "íœ´ê°€ ë³µê·€ ë‚ ì§œ : " + le_end_date +"\n"
+		         + "íœ´ê°€ ì‚¬ìœ  : " + le_type +"\n"
+		         + "ì‚¬ë²ˆ : " + le_ep_id + "\n";
 	}
 }

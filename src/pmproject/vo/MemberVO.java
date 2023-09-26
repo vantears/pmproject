@@ -25,15 +25,15 @@ public class MemberVO {
 	public String toString() {
 		
 		return "\n" +
-				"»ç¹ø : " + ep_id + "\n" +
-				"ÀÌ¸§ : " + ep_name + "\n" +
-				"ÀÌ¸ŞÀÏ : " + ep_email + "\n" +
-				"¿¬¶ôÃ³ : " + ep_phone_num + "\n" +
-				"ºÎ¼­ : " + ep_dept + "\n" +
-				"Á÷±Ş : " + ep_pos + "\n" +
-				"±Ù¹« »óÅÂ : " + ep_st + "\n" +
-				"³²Àº ¿¬Â÷ : "+ ep_leave + "\n" +
-				"¿ù±Ş¿©(¸¸¿ø) : " + ep_salary + "\n";
+				"ì‚¬ë²ˆ : " + ep_id + "\n" +
+				"ì´ë¦„ : " + ep_name + "\n" +
+				"ì´ë©”ì¼ : " + ep_email + "\n" +
+				"ì—°ë½ì²˜ : " + ep_phone_num + "\n" +
+				"ë¶€ì„œ : " + ep_dept + "\n" +
+				"ì§ê¸‰ : " + ep_pos + "\n" +
+				"ê·¼ë¬´ ìƒíƒœ : " + ep_st + "\n" +
+				"ë‚¨ì€ ì—°ì°¨ : "+ ep_leave + "\n" +
+				"ì›”ê¸‰ì—¬(ë§Œì›) : " + ep_salary + "\n";
 	}
 
 }

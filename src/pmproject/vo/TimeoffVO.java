@@ -18,10 +18,10 @@ public class TimeoffVO {
 
 	@Override
 	public String toString() {
-		return     "Åð»ç ¹øÈ£"+ ": " +tm_num +"\n"
-				 + "Åð»ç ³¯Â¥ "+ ": " + getTm_date_str() +"\n"
-		         + "»çÀ¯ "+ ": " +tm_reason +"\n"
-		         + "»ç¹ø "+ ": " +tm_ep_id +"\n";
+		return     "í‡´ì‚¬ ë²ˆí˜¸"+ ": " +tm_num +"\n"
+				 + "í‡´ì‚¬ ë‚ ì§œ "+ ": " + getTm_date_str() +"\n"
+		         + "ì‚¬ìœ  "+ ": " +tm_reason +"\n"
+		         + "ì‚¬ë²ˆ "+ ": " +tm_ep_id +"\n";
 	}
 
 	public TimeoffVO(Date tm_date, String tm_reason, String tm_ep_id) {

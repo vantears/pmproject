@@ -21,13 +21,13 @@ public class Main {
 		}
 
 		private static void printMenu() {
-			System.out.println("=====¸Ş´º=====");
-			System.out.println("1. Á÷¿ø °ü¸®");
-			System.out.println("2. ÇÁ·ÎÁ§Æ® °ü¸®");
-			System.out.println("3. Ãâ°á °ü¸®");
-			System.out.println("4. ÇÁ·Î±×·¥ Á¾·á");
+			System.out.println("=====ë©”ë‰´=====");
+			System.out.println("1. ì§ì› ê´€ë¦¬");
+			System.out.println("2. í”„ë¡œì íŠ¸ ê´€ë¦¬");
+			System.out.println("3. ì¶œê²° ê´€ë¦¬");
+			System.out.println("4. í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 			System.out.println("==============");
-			System.out.print("¸Ş´º ¼±ÅÃ : ");
+			System.out.print("ë©”ë‰´ ì„ íƒ : ");
 			
 		}
 
@@ -43,10 +43,10 @@ public class Main {
 				attendanceController.run();
 				break;
 			case 4:
-				System.out.println("[ÇÁ·Î±×·¥ Á¾·á]");
+				System.out.println("[í”„ë¡œê·¸ë¨ ì¢…ë£Œ]");
 				break;
 			default:
-				System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ!]");
+				System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ!]");
 			}
 			
 		}

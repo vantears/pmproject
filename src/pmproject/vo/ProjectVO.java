@@ -17,16 +17,16 @@ public class ProjectVO {
 		
 		
 		if(pj_start_date == null) {
-			return "ÇÁ·ÎÁ§Æ® ¹øÈ£ : " + pj_num + ", ÇÁ·ÎÁ§Æ®¸í : " + pj_name + ", ½ÃÀÛ³¯Â¥ : ¹ÌÁ¤"  + 
-					", Á¾·á³¯Â¥ : ¹ÌÁ¤ " + ", ÇÁ·ÎÁ§Æ®»óÅÂ : " + pj_state;
+			return "í”„ë¡œì íŠ¸ ë²ˆí˜¸ : " + pj_num + ", í”„ë¡œì íŠ¸ëª… : " + pj_name + ", ì‹œì‘ë‚ ì§œ : ë¯¸ì •"  + 
+					", ì¢…ë£Œë‚ ì§œ : ë¯¸ì • " + ", í”„ë¡œì íŠ¸ìƒíƒœ : " + pj_state;
 		}
 		if(pj_end_date == null) {
-			return "ÇÁ·ÎÁ§Æ® ¹øÈ£ : " + pj_num + ", ÇÁ·ÎÁ§Æ®¸í : " + pj_name + ", ½ÃÀÛ³¯Â¥ : " + pj_start_date + 
-					", Á¾·á³¯Â¥ : ¹ÌÁ¤ " + ", ÇÁ·ÎÁ§Æ®»óÅÂ : " + pj_state;
+			return "í”„ë¡œì íŠ¸ ë²ˆí˜¸ : " + pj_num + ", í”„ë¡œì íŠ¸ëª… : " + pj_name + ", ì‹œì‘ë‚ ì§œ : " + pj_start_date + 
+					", ì¢…ë£Œë‚ ì§œ : ë¯¸ì • " + ", í”„ë¡œì íŠ¸ìƒíƒœ : " + pj_state;
 		}
 		
-		return "ÇÁ·ÎÁ§Æ® ¹øÈ£ : " + pj_num + ", ÇÁ·ÎÁ§Æ®¸í : " + pj_name + ", ½ÃÀÛ³¯Â¥ : " + pj_start_date + 
-				", Á¾·á³¯Â¥ : " + pj_end_date + ", ÇÁ·ÎÁ§Æ®»óÅÂ : " + pj_state;
+		return "í”„ë¡œì íŠ¸ ë²ˆí˜¸ : " + pj_num + ", í”„ë¡œì íŠ¸ëª… : " + pj_name + ", ì‹œì‘ë‚ ì§œ : " + pj_start_date + 
+				", ì¢…ë£Œë‚ ì§œ : " + pj_end_date + ", í”„ë¡œì íŠ¸ìƒíƒœ : " + pj_state;
 	}
 
 	public ProjectVO(String name) {
@@ -48,5 +48,3 @@ public class ProjectVO {
 
 	
 }
-
-

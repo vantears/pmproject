@@ -1,7 +1,5 @@
 package pmproject.controller;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,24 +8,22 @@ import pmproject.service.EPServiceImp;
 import pmproject.service.MemberService;
 import pmproject.service.MemberServiceImp;
 import pmproject.vo.MemberVO;
-import pmproject.vo.SalaryVO;
 
 public class EPController {
 	
 	private EPService epService = new EPServiceImp();
 	private MemberService memberService = new MemberServiceImp();
 	private static TimeoffController timeoffController = new TimeoffController();
+	Scanner sc = new Scanner(System.in);
 	
 	public void run() {
 		int menu;
 		final int EXIT = 4;
-		Scanner sc = new Scanner(System.in);
 		
 		do {
 			EPprintMenu();
 			menu = sc.nextInt();
 			runMenu(menu);
-			System.out.println("=================");
 		}while(menu != EXIT);
 		
 	}
@@ -43,33 +39,33 @@ public class EPController {
 			timeoffController.timeoff();
 			break;
 		case 4:
-			System.out.println("[µÚ·Î°¡±â]");
+			System.out.println("[ë’¤ë¡œê°€ê¸°]");
 			break;
 		default:
-			System.out.println("[Àß¸øµÈ ¸Ş´º ÀÔ·Â]");
+			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì…ë ¥]");
 		
 		}
 	}
 	
 	private void Resignation() {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Åğ»çÃ³¸®ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("í‡´ì‚¬ì²˜ë¦¬í•  ì§ì› ì‚¬ë²ˆ : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		} else if(memberService.selectMember(id).getEp_st_num() == 2){
-			System.out.println("[ÀÌ¹Ì ÅğÁ÷Ã³¸® µÈ Á÷¿øÀÔ´Ï´Ù.]");
+			System.out.println("[ì´ë¯¸ í‡´ì§ì²˜ë¦¬ ëœ ì§ì›ì…ë‹ˆë‹¤.]");
 		} else {
 			MemberVO dbMember = memberService.selectMember(id);
-			System.out.println("[Á÷¿ø Á¶È¸°á°ú]");
-			System.out.println("»ç¹ø : " + dbMember.getEp_id());
-			System.out.println("ÀÌ¸§ : " + dbMember.getEp_name());
-			System.out.println("ÀÌ¸ŞÀÏ : " + dbMember.getEp_email());
-			System.out.println("¿¬¶ôÃ³ : " + dbMember.getEp_phone_num());
+			System.out.println("[ì§ì› ì¡°íšŒê²°ê³¼]");
+			System.out.println("ì‚¬ë²ˆ : " + dbMember.getEp_id());
+			System.out.println("ì´ë¦„ : " + dbMember.getEp_name());
+			System.out.println("ì´ë©”ì¼ : " + dbMember.getEp_email());
+			System.out.println("ì—°ë½ì²˜ : " + dbMember.getEp_phone_num());
 			if(epService.deleteEP(dbMember)) {
-				System.out.println("[Á÷¿ø Åğ»ç Ã³¸® ¿Ï·á]");
+				System.out.println("[ì§ì› í‡´ì‚¬ ì²˜ë¦¬ ì™„ë£Œ]");
 			}else {
-				System.out.println("[Á÷¿ø Åğ»ç Ã³¸® ½ÇÆĞ]");
+				System.out.println("[ì§ì› í‡´ì‚¬ ì²˜ë¦¬ ì‹¤íŒ¨]");
 			}
 		}
 		
@@ -83,14 +79,13 @@ public class EPController {
 	
 	}
 	private static void EPprintMenu() {
-		System.out.println("=====°Ô½ÃÆÇ¸Ş´º=====");
-		System.out.println("1. Á÷¿ø ÀüÃ¼ Á¶È¸");
-		System.out.println("2. Á÷¿ø Åğ»ç Ã³¸®");
-		System.out.println("3. Á÷¿ø ÈŞ°¡/Åğ»ç °ü¸®");
-		System.out.println("4. µÚ·Î°¡±â");
+		System.out.println("=====ê²Œì‹œíŒë©”ë‰´=====");
+		System.out.println("1. ì§ì› ì „ì²´ ì¡°íšŒ");
+		System.out.println("2. ì§ì› í‡´ì‚¬ ì²˜ë¦¬");
+		System.out.println("3. ì§ì› íœ´ê°€/í‡´ì‚¬ ê´€ë¦¬");
+		System.out.println("4. ë’¤ë¡œê°€ê¸°");
 		System.out.println("=================");
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 	}
 	
 }
-

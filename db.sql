@@ -37,7 +37,7 @@ CREATE TABLE `at_record` (
 
 LOCK TABLES `at_record` WRITE;
 /*!40000 ALTER TABLE `at_record` DISABLE KEYS */;
-INSERT INTO `at_record` VALUES (1,'17:44:00',NULL),(5,'09:27:03',NULL);
+INSERT INTO `at_record` VALUES (1,'08:00:00','17:00:00'),(3,'08:00:00','17:00:00'),(4,'08:00:00','17:00:00'),(5,'08:00:00','17:00:00'),(6,'08:00:00','17:00:00'),(9,'08:00:00','17:00:00'),(10,'08:00:00','17:00:00'),(12,'08:00:00','17:00:00'),(13,'08:00:00','17:00:00'),(14,'08:00:00','17:00:00'),(15,'08:00:00','17:00:00'),(16,'08:00:00','17:00:00'),(17,'08:00:00','17:00:00'),(20,'08:00:00','17:00:00'),(21,'08:00:00','17:00:00'),(22,'08:00:00','17:00:00'),(23,'08:00:00','17:00:00'),(24,'08:00:00','17:00:00'),(1,'08:00:00','17:00:00'),(3,'08:00:00','17:00:00'),(4,'08:00:00','17:00:00'),(5,'08:00:00','17:00:00'),(6,'08:00:00','17:00:00'),(9,'08:00:00','17:00:00'),(10,'08:00:00','17:00:00'),(12,'08:00:00','17:00:00'),(13,'08:00:00','17:00:00'),(14,'08:00:00','17:00:00'),(15,'08:00:00','17:00:00'),(16,'08:00:00','17:00:00'),(17,'08:00:00','17:00:00'),(20,'08:00:00','17:00:00'),(21,'08:00:00','17:00:00'),(22,'08:00:00','17:00:00'),(23,'08:00:00','17:00:00'),(24,'08:00:00','17:00:00');
 /*!40000 ALTER TABLE `at_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `attendance` (
   KEY `FK_employee_TO_attendance_1` (`ad_ep_id`),
   CONSTRAINT `FK_attendance_type_TO_attendance_1` FOREIGN KEY (`ad_at_num`) REFERENCES `attendance_type` (`at_num`),
   CONSTRAINT `FK_employee_TO_attendance_1` FOREIGN KEY (`ad_ep_id`) REFERENCES `employee` (`ep_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (1,'2023-09-21','PM00001',2),(2,'2023-09-21','PM00002',1),(3,'2023-09-21','PM00003',1),(4,'2023-09-21','PM00004',1),(5,'2023-09-22','PM00001',2),(6,'2023-09-22','PM00002',1),(7,'2023-09-22','PM00003',1),(8,'2023-09-22','PM00004',1),(9,'2023-09-22','PM00005',1);
+INSERT INTO `attendance` VALUES (1,'2023-09-05','PM00001',2),(2,'2023-09-05','PM00002',3),(3,'2023-09-05','PM00003',2),(4,'2023-09-05','PM00004',2),(5,'2023-09-05','PM00005',2),(6,'2023-09-05','PM00006',2),(7,'2023-09-05','PM00007',4),(8,'2023-09-05','PM00008',3),(9,'2023-09-05','PM00009',2),(10,'2023-09-05','PM00010',2),(11,'2023-09-05','PM00011',4),(12,'2023-09-05','PM00012',2),(13,'2023-09-05','PM00013',2),(14,'2023-09-05','PM00014',2),(15,'2023-09-05','PM00015',2),(16,'2023-09-05','PM00016',2),(17,'2023-09-05','PM00017',2),(18,'2023-09-05','PM00018',4),(19,'2023-09-05','PM00019',1),(20,'2023-09-05','PM00020',2),(21,'2023-09-05','PM00021',2),(22,'2023-09-05','PM00022',2),(23,'2023-09-05','PM00023',2),(24,'2023-09-05','PM00024',2),(25,'2023-09-05','PM00025',3),(26,'2023-09-06','PM00001',2),(27,'2023-09-06','PM00002',3),(28,'2023-09-06','PM00003',2),(29,'2023-09-06','PM00004',2),(30,'2023-09-06','PM00005',2),(31,'2023-09-06','PM00006',2),(32,'2023-09-06','PM00007',4),(33,'2023-09-06','PM00008',3),(34,'2023-09-06','PM00009',2),(35,'2023-09-06','PM00010',2),(36,'2023-09-06','PM00011',4),(37,'2023-09-06','PM00012',2),(38,'2023-09-06','PM00013',2),(39,'2023-09-06','PM00014',2),(40,'2023-09-06','PM00015',2),(41,'2023-09-06','PM00016',2),(42,'2023-09-06','PM00017',2),(43,'2023-09-06','PM00018',4),(44,'2023-09-06','PM00019',1),(45,'2023-09-06','PM00020',2),(46,'2023-09-06','PM00021',2),(47,'2023-09-06','PM00022',2),(48,'2023-09-06','PM00023',2),(49,'2023-09-06','PM00024',2),(50,'2023-09-06','PM00025',3);
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +82,7 @@ CREATE TABLE `attendance_type` (
   `at_num` int NOT NULL AUTO_INCREMENT,
   `at_type` varchar(15) NOT NULL,
   PRIMARY KEY (`at_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +152,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES ('PM00001','aaa','aaa','010-5888-5888',5,1,1,15,650),('PM00002','박나래','narae@pmcompany.co.kr','010-1235-1235',1,1,2,0,0),('PM00003','김동동','ddong@pjcompany.com','010-5555-5555',1,1,1,15,500),('PM00004','김김김','kim@kim.com','010-4444-4444',1,1,1,15,500),('PM00005','홍대병','hongdae@pjcompany.com','010-8877-8877',1,1,1,15,500);
+INSERT INTO `employee` VALUES ('PM00001','김첨지','kcj@pmcompany.kr','010-1111-1111',2,6,1,10,500),('PM00002','홍길동','hkd@pmcompany.kr','010-2222-2222',3,6,1,8,500),('PM00003','임창정','lcj@pmcompany.kr','010-3333-3333',4,6,1,12,500),('PM00004','이순신','lss@pmcompany.kr','010-4444-4444',5,6,1,6,500),('PM00005','김중배','kjb@pmcompany.kr','010-1234-1111',2,5,1,2,450),('PM00006','박나라','pnl@pmcompany.kr','010-5678-2222',3,5,1,11,450),('PM00007','정도전','jdj@pmcompany.kr','010-9123-3333',4,5,1,7,450),('PM00008','민기옥','mko@pmcompany.kr','010-4567-4444',5,5,1,14,450),('PM00009','전해리','jhl@pmcompany.kr','010-4321-1111',2,4,1,7,400),('PM00010','유해진','lhj@pmcompany.kr','010-8765-2222',3,4,1,6,400),('PM00011','고길동','ggd@pmcompany.kr','010-3219-3333',4,4,1,12,400),('PM00012','신선아','ssa@pmcompany.kr','010-7654-4444',5,4,1,9,400),('PM00013','구하라','ghr@pmcompany.kr','010-1212-1111',2,3,1,3,350),('PM00014','이병헌','lbh@pmcompany.kr','010-2323-2222',3,3,1,9,350),('PM00015','박서준','psj@pmcompany.kr','010-3434-3333',4,3,1,8,350),('PM00016','이형기','lhk@pmcompany.kr','010-4545-4444',5,3,1,7,350),('PM00017','추신수','css@pmcompany.kr','010-5555-1111',2,2,1,3,300),('PM00018','이만기','lmk@pmcompany.kr','010-6666-2222',3,2,1,4,300),('PM00019','마소희','msh@pmcompany.kr','010-7777-3333',4,2,1,6,300),('PM00020','김진수','kjs@pmcompany.kr','010-8888-4444',5,2,1,10,300),('PM00021','오만수','oms@pmcompany.kr','010-5656-1111',2,1,1,8,250),('PM00022','구본혁','kbh@pmcompany.kr','010-6767-2222',3,1,1,7,250),('PM00023','강기혁','kkh@pmcompany.kr','010-7878-3333',4,1,1,7,250),('PM00024','정주영','jjy@pmcompany.kr','010-8989-4444',5,1,1,6,250),('PM00025','최대기','cdk@pmcompany.kr','010-9999-9999',1,1,1,6,250),('PM00026','김휴직','khj@pmcompany.kr','010-0000-0000',4,5,1,8,0),('PM00027','이퇴직','ltj@pmcompany.kr','010-0101-0101',5,4,2,0,0),('PM00028','나애진','naj@pmcompany.kr','010-0202-0202',2,1,2,0,0);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +172,7 @@ CREATE TABLE `leave` (
   PRIMARY KEY (`le_num`),
   KEY `FK_employee_TO_Leave_1` (`le_ep_id`),
   CONSTRAINT `FK_employee_TO_Leave_1` FOREIGN KEY (`le_ep_id`) REFERENCES `employee` (`ep_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `leave` (
 
 LOCK TABLES `leave` WRITE;
 /*!40000 ALTER TABLE `leave` DISABLE KEYS */;
-INSERT INTO `leave` VALUES (1,'2023-09-15','2023-09-18','연차','PM00001');
+INSERT INTO `leave` VALUES (1,'2022-12-24','2022-12-24','연차','PM00012'),(2,'2023-03-02','2022-03-05','경조사','PM00005'),(3,'2023-08-16','2023-08-16','연차','PM00017'),(4,'2023-01-16','2023-08-16','육아휴직','PM00026');
 /*!40000 ALTER TABLE `leave` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,7 +246,7 @@ CREATE TABLE `project` (
   `pj_end_date` date DEFAULT NULL,
   `pj_state` varchar(15) NOT NULL,
   PRIMARY KEY (`pj_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +255,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'종료 프로젝트1','2022-09-06','2023-03-21','종료'),(2,'종료 프로젝트2','2022-11-12','2023-06-30','종료'),(3,'진행 프로젝트1','2023-04-07',NULL,'진행'),(4,'진행 프로젝트2','2023-08-02',NULL,'진행'),(5,'종료 프로젝트3','2023-09-21','2023-09-21','종료'),(6,'예정 프로젝트4-1','2023-10-16','2023-12-31','예정');
+INSERT INTO `project` VALUES (1,'종료 프로젝트1','2022-09-06','2023-03-21','종료'),(2,'종료 프로젝트2','2022-11-12','2023-06-30','종료'),(3,'진행 프로젝트1','2023-04-07',NULL,'진행'),(4,'진행 프로젝트2','2023-08-02',NULL,'진행'),(5,'예정 프로젝트1',NULL,NULL,'예정');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +276,7 @@ CREATE TABLE `project_info` (
   KEY `FK_project_TO_project_info_1` (`pi_pj_num`),
   CONSTRAINT `FK_employee_TO_project_info_1` FOREIGN KEY (`pi_ep_id`) REFERENCES `employee` (`ep_id`),
   CONSTRAINT `FK_project_TO_project_info_1` FOREIGN KEY (`pi_pj_num`) REFERENCES `project` (`pj_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,6 +285,7 @@ CREATE TABLE `project_info` (
 
 LOCK TABLES `project_info` WRITE;
 /*!40000 ALTER TABLE `project_info` DISABLE KEYS */;
+INSERT INTO `project_info` VALUES (1,'PM00001',1,'팀장'),(2,'PM00026',1,'부팀장'),(3,'PM00010',1,'팀원'),(4,'PM00015',1,'팀원'),(5,'PM00018',1,'팀원'),(6,'PM00028',1,'팀원'),(7,'PM00002',2,'팀장'),(8,'PM00007',2,'부팀장'),(9,'PM00027',2,'팀원'),(10,'PM00014',2,'팀원'),(11,'PM00017',2,'팀원'),(12,'PM00021',2,'팀원'),(13,'PM00003',3,'팀장'),(14,'PM00006',3,'부팀장'),(15,'PM00012',3,'팀원'),(16,'PM00016',3,'팀원'),(17,'PM00019',3,'팀원'),(18,'PM00022',3,'팀원'),(19,'PM00004',4,'팀장'),(20,'PM00008',4,'부팀장'),(21,'PM00009',4,'팀원'),(22,'PM00013',4,'팀원'),(23,'PM00020',4,'팀원'),(24,'PM00027',4,'팀원'),(25,'PM00001',5,'팀장'),(26,'PM00005',5,'부팀장'),(27,'PM00011',5,'팀원'),(28,'PM00014',5,'팀원'),(29,'PM00017',5,'팀원'),(30,'PM00023',5,'팀원');
 /*!40000 ALTER TABLE `project_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,7 +308,7 @@ CREATE TABLE `salaryhistory` (
   KEY `FK_pay_TO_salaryHistory_1` (`sh_pa_type`),
   CONSTRAINT `FK_employee_TO_salaryHistory_1` FOREIGN KEY (`sh_ep_id`) REFERENCES `employee` (`ep_id`),
   CONSTRAINT `FK_pay_TO_salaryHistory_1` FOREIGN KEY (`sh_pa_type`) REFERENCES `pay` (`pa_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,7 +317,7 @@ CREATE TABLE `salaryhistory` (
 
 LOCK TABLES `salaryhistory` WRITE;
 /*!40000 ALTER TABLE `salaryhistory` DISABLE KEYS */;
-INSERT INTO `salaryhistory` VALUES (2,'2023-09-15','PM00001','유급 휴가','9월 유급 휴가',25);
+INSERT INTO `salaryhistory` VALUES (1,'2023-04-01','PM00026','월급','3월 월급',450),(2,'2023-07-01','PM00027','월급','6월 월급',400),(3,'2023-05-01','PM00028','월급','4월 월급',250),(4,'2023-05-01','PM00026','유급 휴가','유급 휴가',450),(5,'2023-07-04','PM00027','퇴직금','퇴직금',400),(6,'2023-04-01','PM00028','성과금','프로젝트 성과금',100),(7,'2023-08-01','PM00001','월급','7월 월급',500),(8,'2023-08-01','PM00002','월급','7월 월급',500),(9,'2023-08-01','PM00003','월급','7월 월급',500),(10,'2023-08-01','PM00004','월급','7월 월급',500),(11,'2023-08-01','PM00005','월급','7월 월급',450),(12,'2023-08-01','PM00006','월급','7월 월급',450),(13,'2023-08-01','PM00007','월급','7월 월급',450),(14,'2023-08-01','PM00008','월급','7월 월급',450),(15,'2023-08-01','PM00009','월급','7월 월급',400),(16,'2023-08-01','PM00010','월급','7월 월급',400),(17,'2023-08-01','PM00011','월급','7월 월급',400),(18,'2023-08-01','PM00012','월급','7월 월급',400),(19,'2023-08-01','PM00013','월급','7월 월급',350),(20,'2023-08-01','PM00014','월급','7월 월급',350),(21,'2023-08-01','PM00015','월급','7월 월급',350),(22,'2023-08-01','PM00016','월급','7월 월급',350),(23,'2023-08-01','PM00017','월급','7월 월급',300),(24,'2023-08-01','PM00018','월급','7월 월급',300),(25,'2023-08-01','PM00019','월급','7월 월급',300),(26,'2023-08-01','PM00020','월급','7월 월급',300),(27,'2023-08-01','PM00021','월급','7월 월급',250),(28,'2023-08-01','PM00022','월급','7월 월급',250),(29,'2023-08-01','PM00023','월급','7월 월급',250),(30,'2023-08-01','PM00024','월급','7월 월급',250);
 /*!40000 ALTER TABLE `salaryhistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,7 +332,7 @@ CREATE TABLE `status` (
   `st_num` int NOT NULL AUTO_INCREMENT,
   `st_type` varchar(20) NOT NULL,
   PRIMARY KEY (`st_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +360,7 @@ CREATE TABLE `termination` (
   PRIMARY KEY (`tm_num`),
   KEY `FK_employee_TO_Termination_1` (`tm_ep_id`),
   CONSTRAINT `FK_employee_TO_Termination_1` FOREIGN KEY (`tm_ep_id`) REFERENCES `employee` (`ep_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -368,7 +369,7 @@ CREATE TABLE `termination` (
 
 LOCK TABLES `termination` WRITE;
 /*!40000 ALTER TABLE `termination` DISABLE KEYS */;
-INSERT INTO `termination` VALUES (1,'2023-09-15','퇴직','PM00002');
+INSERT INTO `termination` VALUES (1,'2023-07-03','퇴직','PM00027'),(2,'2023-05-29','퇴직','PM00028');
 /*!40000 ALTER TABLE `termination` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -390,7 +391,7 @@ CREATE TABLE `transfer` (
   KEY `FK_department_TO_transfer_1` (`tr_dm_num`),
   CONSTRAINT `FK_department_TO_transfer_1` FOREIGN KEY (`tr_dm_num`) REFERENCES `department` (`dm_num`),
   CONSTRAINT `FK_employee_TO_transfer_1` FOREIGN KEY (`tr_ep_id`) REFERENCES `employee` (`ep_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,7 +400,7 @@ CREATE TABLE `transfer` (
 
 LOCK TABLES `transfer` WRITE;
 /*!40000 ALTER TABLE `transfer` DISABLE KEYS */;
-INSERT INTO `transfer` VALUES (1,'2023-09-15','발령','PM00001',5);
+INSERT INTO `transfer` VALUES (1,'2023-02-27','공석 보충','PM00012',5),(2,'2023-05-30','공석 보충','PM00023',2);
 /*!40000 ALTER TABLE `transfer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -412,4 +413,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-22 10:20:08
+-- Dump completed on 2023-09-26 16:35:20

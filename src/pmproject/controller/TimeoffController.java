@@ -49,33 +49,33 @@ private void timeoff2(int menu) {
 			LeaveModify();
 			break;
 		case 6:
-			System.out.println("[µÚ·Î°¡±â]");
+			System.out.println("[ë’¤ë¡œê°€ê¸°]");
 			break;
 		default:
-			System.out.println("[Àß¸øµÈ ¸Ş´º ÀÔ·Â]");
+			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì…ë ¥]");
 		
 		}
 	}
 	
 	private void LeaveModify() {
-		System.out.print("ÈŞ°¡ ¼öÁ¤ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("íœ´ê°€ ìˆ˜ì •í•  ì§ì› ì‚¬ë²ˆ : ");
 		String ep_id = sc.next();
 		List<LeaveVO> leaveList = timeoffService.selectLeaveList(ep_id);
 		if(leaveList == null) {
-			System.out.println("[ÇØ´ç Á÷¿øÀÇ ÈŞ°¡ ³»¿ªÀÌ ¾ø½À´Ï´Ù.]");
+			System.out.println("[í•´ë‹¹ ì§ì›ì˜ íœ´ê°€ ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.]");
 		} else {
 			for(LeaveVO tmp : leaveList) {
 				System.out.println(tmp);
 			}
 		}
-		System.out.print("¼öÁ¤ÇÒ ÈŞ°¡ ¹øÈ£ : ");
+		System.out.print("ìˆ˜ì •í•  íœ´ê°€ ë²ˆí˜¸ : ");
 		int le_num = sc.nextInt();
-		System.out.print("º¯°æµÈ ÈŞ°¡ ½ÃÀÛ ³¯Â¥(yyyy-mm-dd) : ");
+		System.out.print("ë³€ê²½ëœ íœ´ê°€ ì‹œì‘ ë‚ ì§œ(yyyy-mm-dd) : ");
 		String le_start_date = sc.next();
-		System.out.print("º¯°æµÈ ÈŞ°¡ º¹±Í ³¯Â¥(yyyy-mm-dd) : ");
+		System.out.print("ë³€ê²½ëœ íœ´ê°€ ë³µê·€ ë‚ ì§œ(yyyy-mm-dd) : ");
 		String le_end_date = sc.next();
 		sc.nextLine();
-		System.out.print("º¯°æµÈ ÈŞ°¡ »çÀ¯ : ");
+		System.out.print("ë³€ê²½ëœ íœ´ê°€ ì‚¬ìœ  : ");
 		String le_type = sc.nextLine();
 		timeoffService.updateLeave(le_num, le_start_date, le_end_date, le_type);
 }
@@ -83,11 +83,11 @@ private void timeoff2(int menu) {
 
 
 	private void LeaveSearch() {
-		System.out.print("ÈŞ°¡ Á¶È¸ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("íœ´ê°€ ì¡°íšŒí•  ì§ì› ì‚¬ë²ˆ : ");
 		String ep_id = sc.next();
 		List<LeaveVO> leaveList = timeoffService.selectLeaveList(ep_id);
 		if(leaveList == null) {
-			System.out.println("[ÇØ´ç Á÷¿øÀÇ ÈŞ°¡ ³»¿ªÀÌ ¾ø½À´Ï´Ù.]");
+			System.out.println("[í•´ë‹¹ ì§ì›ì˜ íœ´ê°€ ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.]");
 		} else {
 			for(LeaveVO tmp : leaveList) {
 				System.out.println(tmp);
@@ -101,27 +101,27 @@ private void timeoff2(int menu) {
 	private void LeaveInsert() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		sc.nextLine();
-		System.out.println("[Çü½Ä :YYYY-MM-DD]");
-		System.out.print("ÈŞ°¡ ½ÃÀÛÀÏ : ");
+		System.out.println("[í˜•ì‹ :YYYY-MM-DD]");
+		System.out.print("íœ´ê°€ ì‹œì‘ì¼ : ");
 		String le_datestr = sc.nextLine();
-		System.out.println("[Çü½Ä :YYYY-MM-DD]");
-		System.out.print("º¹±ÍÀÏ : ");
+		System.out.println("[í˜•ì‹ :YYYY-MM-DD]");
+		System.out.print("ë³µê·€ì¼ : ");
 		String le_end_datestr = sc.nextLine();
-		System.out.print("»çÀ¯ : ");
+		System.out.print("ì‚¬ìœ  : ");
 		String le_type = sc.nextLine();
-		System.out.print("Á÷¿ø »ç¹ø : ");
+		System.out.print("ì§ì› ì‚¬ë²ˆ : ");
 		String le_ep_id = sc.next();
 		MemberVO dbMember = memberService.selectMember(le_ep_id);
 		if(dbMember == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ!]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨!]");
 			return;
 		}
 		LeaveVO leave = new LeaveVO(le_datestr, le_end_datestr, le_type, le_ep_id);
 		System.out.println(leave);
 	    if (timeoffService.insertTimeoff(leave)) {
-	    	System.out.println("[Á÷¿ø Á¤º¸ ¼öÁ¤ ¼º°ø]");
+	    	System.out.println("[ì§ì› ì •ë³´ ìˆ˜ì • ì„±ê³µ]");
 	    } else {
-	    	System.out.println("[Á÷¿ø Á¤º¸ ¼öÁ¤ ½ÇÆĞ]");
+	    	System.out.println("[ì§ì› ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨]");
 	    }
 		
 }
@@ -131,7 +131,7 @@ private void timeoff2(int menu) {
 	private void TOInquiry() {
 		List<TimeoffVO> timeoffList = timeoffService.getTimeoffList();
 		if(timeoffList == null) {
-			System.out.println("[Åğ»çÀÚ ÀÌ·ÂÀÌ ¾ø½À´Ï´Ù.]");
+			System.out.println("[í‡´ì‚¬ì ì´ë ¥ì´ ì—†ìŠµë‹ˆë‹¤.]");
 			return;
 		}
 		for(TimeoffVO tmp2 : timeoffList) {
@@ -141,22 +141,22 @@ private void timeoff2(int menu) {
 	private void TOModify() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
-		System.out.print("¼öÁ¤ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("ìˆ˜ì •í•  ì§ì› ì‚¬ë²ˆ : ");
 		String ep_id = sc.next();
 		if(memberService.selectMember(ep_id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 			return;
 		}
 		TimeoffVO dbTimeoff = timeoffService.selectTimeoff(ep_id);
 		if(dbTimeoff == null) {
-			System.out.println("[ÇØ´ç Á÷¿øÀÇ ÅğÁ÷ ÀÌ·ÂÀÌ ¾ø½À´Ï´Ù!]");
+			System.out.println("[í•´ë‹¹ ì§ì›ì˜ í‡´ì§ ì´ë ¥ì´ ì—†ìŠµë‹ˆë‹¤!]");
 			return;
 		}
 		sc.nextLine();
-		System.out.println("[Çü½Ä :YYYY-MM-DD]");
-		System.out.print("Åğ»ç ³¯Â¥ : ");
+		System.out.println("[í˜•ì‹ :YYYY-MM-DD]");
+		System.out.print("í‡´ì‚¬ ë‚ ì§œ : ");
 		String tm_datestr = sc.nextLine();
-		System.out.print("»çÀ¯ : ");
+		System.out.print("ì‚¬ìœ  : ");
 		String tm_reason = sc.nextLine();
 		
 		
@@ -165,25 +165,25 @@ private void timeoff2(int menu) {
 	        dbTimeoff.setTm_date(tm_date);
 	        dbTimeoff.setTm_reason(tm_reason);
 	        if (timeoffService.updateTimeoff(dbTimeoff)) {
-	            System.out.println("[Á÷¿ø Åğ»ç Á¤º¸ ¼öÁ¤ ¼º°ø]");
+	            System.out.println("[ì§ì› í‡´ì‚¬ ì •ë³´ ìˆ˜ì • ì„±ê³µ]");
 	        } else {
-	            System.out.println("[Á÷¿ø Åğ»ç Á¤º¸ ¼öÁ¤ ½ÇÆĞ]");
+	            System.out.println("[ì§ì› í‡´ì‚¬ ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨]");
 	        }
 	    } catch (ParseException e) {
-	        System.out.println("³¯Â¥ Çü½ÄÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.");
+	        System.out.println("ë‚ ì§œ í˜•ì‹ì´ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 	    }
 	
 	}
 	
 	private static void TOPrintMenu() {
-		System.out.println("=====°Ô½ÃÆÇ¸Ş´º=====");
-		System.out.println("1. Åğ»çÀÚ Á¤º¸ Á¶È¸");
-		System.out.println("2. Åğ»çÀÚ Á¤º¸ ¼öÁ¤");
-		System.out.println("3. Á÷¿ø ÈŞ°¡ Á¶È¸");
-		System.out.println("4. Á÷¿ø ÈŞ°¡ µî·Ï");
-		System.out.println("5. Á÷¿ø ÈŞ°¡ ¼öÁ¤");
-		System.out.println("6. µÚ·Î°¡±â");
+		System.out.println("=====ê²Œì‹œíŒë©”ë‰´=====");
+		System.out.println("1. í‡´ì‚¬ì ì •ë³´ ì¡°íšŒ");
+		System.out.println("2. í‡´ì‚¬ì ì •ë³´ ìˆ˜ì •");
+		System.out.println("3. ì§ì› íœ´ê°€ ì¡°íšŒ");
+		System.out.println("4. ì§ì› íœ´ê°€ ë“±ë¡");
+		System.out.println("5. ì§ì› íœ´ê°€ ìˆ˜ì •");
+		System.out.println("6. ë’¤ë¡œê°€ê¸°");
 		System.out.println("=================");
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 	}
 }

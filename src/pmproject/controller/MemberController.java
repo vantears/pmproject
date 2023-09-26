@@ -2,7 +2,6 @@ package pmproject.controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,7 +18,6 @@ public class MemberController {
 	private MemberService memberService = new MemberServiceImp();
 	private EPController epController = new EPController();
 	Scanner sc = new Scanner(System.in);
-
 	public void run() {
 		int menu;
 		final int EXIT = 4;
@@ -33,13 +31,13 @@ public class MemberController {
 
 
 	private void printMenu() {
-		System.out.println("=====Á÷¿ø °ü¸®=====");
-		System.out.println("1. Á÷¿ø µî·Ï");
-		System.out.println("2. Á÷¿ø Á¤º¸ °ü¸®");
-		System.out.println("3. Á÷¿ø Åğ»ç ¹× ÈŞ°¡ °ü¸®");
-		System.out.println("4. ÀÌÀü ¸Ş´º");
+		System.out.println("=====ì§ì› ê´€ë¦¬=====");
+		System.out.println("1. ì§ì› ë“±ë¡");
+		System.out.println("2. ì§ì› ì •ë³´ ê´€ë¦¬");
+		System.out.println("3. ì§ì› í‡´ì‚¬ ë° íœ´ê°€ ê´€ë¦¬");
+		System.out.println("4. ì´ì „ ë©”ë‰´");
 		System.out.println("=================");
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 		
 	}
 
@@ -55,10 +53,10 @@ public class MemberController {
 			epController.run();
 			break;
 		case 4:
-			System.out.println("[ÀÌÀü¸Ş´º·Î ÀÌµ¿]");
+			System.out.println("[ì´ì „ë©”ë‰´ë¡œ ì´ë™]");
 			break;
 		default:
-			System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ!]");
+			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ!]");
 		}
 		
 	}
@@ -68,17 +66,17 @@ public class MemberController {
 		int menu;
 		final int EXIT = 8;
 		do {
-			System.out.println("=====Á÷¿ø Á¤º¸ °ü¸®=====");
-			System.out.println("1. Á÷¿ø Á¶È¸");
-			System.out.println("2. Á÷¿ø ¿¬¶ôÃ³ ¼öÁ¤");
-			System.out.println("3. Á÷¿ø ºÎ¼­ ÀÌµ¿");
-			System.out.println("4. Á÷¿ø ºÎ¼­ ÀÌµ¿ ³»¿ª Á¶È¸");
-			System.out.println("5. Á÷¿ø ±Ş¿© ¼öÁ¤");
-			System.out.println("6. ±Ş¿© Áö±Ş");
-			System.out.println("7. Á÷¿ø ±Ş¿© ÀÌ·Â Á¶È¸");
-			System.out.println("8. ÀÌÀü ¸Ş´º");
+			System.out.println("=====ì§ì› ì •ë³´ ê´€ë¦¬=====");
+			System.out.println("1. ì§ì› ì¡°íšŒ");
+			System.out.println("2. ì§ì› ì—°ë½ì²˜ ìˆ˜ì •");
+			System.out.println("3. ì§ì› ë¶€ì„œ ì´ë™");
+			System.out.println("4. ì§ì› ë¶€ì„œ ì´ë™ ë‚´ì—­ ì¡°íšŒ");
+			System.out.println("5. ì§ì› ê¸‰ì—¬ ìˆ˜ì •");
+			System.out.println("6. ê¸‰ì—¬ ì§€ê¸‰");
+			System.out.println("7. ì§ì› ê¸‰ì—¬ ì´ë ¥ ì¡°íšŒ");
+			System.out.println("8. ì´ì „ ë©”ë‰´");
 			System.out.println("=================");
-			System.out.print("¸Ş´º ¼±ÅÃ : ");
+			System.out.print("ë©”ë‰´ ì„ íƒ : ");
 			menu = sc.nextInt();
 			switch(menu) {
 			case 1:
@@ -103,10 +101,10 @@ public class MemberController {
 				searchSalaryHistory();
 				break;
 			case 8:
-				System.out.println("[ÀÌÀü ¸Ş´º·Î ÀÌµ¿]");
+				System.out.println("[ì´ì „ ë©”ë‰´ë¡œ ì´ë™]");
 				break;
 			default:
-				System.out.println("[Àß¸øµÈ ¸Ş´º ¼±ÅÃ!]");
+				System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì„ íƒ!]");
 			}
 		}while(menu != EXIT);
 		
@@ -114,14 +112,14 @@ public class MemberController {
 
 
 	private void searchTransfer() {
-		System.out.print("ºÎ¼­ ÀÌµ¿ ³»¿ª Á¶È¸ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("ë¶€ì„œ ì´ë™ ë‚´ì—­ ì¡°íšŒí•  ì§ì› ì‚¬ë²ˆ : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		} else {
 			List<TransferVO> transferHistory = memberService.SearchTransfer(id);
 			if(transferHistory == null) {
-				System.out.println("ºÎ¼­ÀÌµ¿ ³»¿ªÀÌ ¾ø½À´Ï´Ù.");
+				System.out.println("ë¶€ì„œì´ë™ ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.");
 				return;
 			}
 			for(TransferVO tmp : transferHistory) {
@@ -134,43 +132,43 @@ public class MemberController {
 
 
 	private void giveSalary() {
-		System.out.print("±Ş¿© Áö±ŞÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("ê¸‰ì—¬ ì§€ê¸‰í•  ì§ì› ì‚¬ë²ˆ : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		} else {
 			MemberVO dbMember = memberService.selectMember(id);
-			System.out.println("[Á÷¿ø Á¶È¸°á°ú]");
-			System.out.println("»ç¹ø : " + dbMember.getEp_id());
-			System.out.println("ÀÌ¸§ : " + dbMember.getEp_name());
-			System.out.println("ÀÌ¸ŞÀÏ : " + dbMember.getEp_email());
-			System.out.println("¿¬¶ôÃ³ : " + dbMember.getEp_phone_num());
-			System.out.println("¿ù±Ş¿©(¸¸¿ø) : " + dbMember.getEp_salary());
+			System.out.println("[ì§ì› ì¡°íšŒê²°ê³¼]");
+			System.out.println("ì‚¬ë²ˆ : " + dbMember.getEp_id());
+			System.out.println("ì´ë¦„ : " + dbMember.getEp_name());
+			System.out.println("ì´ë©”ì¼ : " + dbMember.getEp_email());
+			System.out.println("ì—°ë½ì²˜ : " + dbMember.getEp_phone_num());
+			System.out.println("ì›”ê¸‰ì—¬(ë§Œì›) : " + dbMember.getEp_salary());
 			LocalDate date = LocalDate.now();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			String today = date.format(formatter);
-			System.out.println("¿À´Ã ³¯Â¥ : " + today);
-			System.out.println("-Áö±Ş °¡´ÉÇÑ ±Ş¿© À¯Çü-");
+			System.out.println("ì˜¤ëŠ˜ ë‚ ì§œ : " + today);
+			System.out.println("-ì§€ê¸‰ ê°€ëŠ¥í•œ ê¸‰ì—¬ ìœ í˜•-");
 			List<SalaryVO> SalaryTypeList = memberService.selectSalaryType();
 			for(SalaryVO tmp : SalaryTypeList) {
 				System.out.println((SalaryTypeList.lastIndexOf(tmp) + 1) + ". " + tmp.getPa_type());
 			}
 			sc.nextLine();
-			System.out.print("Áö±ŞÇÒ ±Ş¿© À¯Çü : ");
+			System.out.print("ì§€ê¸‰í•  ê¸‰ì—¬ ìœ í˜• : ");
 			String salaryType = sc.nextLine();
 			SalaryVO salaryVO = new SalaryVO(salaryType);
 			if(!SalaryTypeList.contains(salaryVO)) {
-				System.out.println("[Á¸ÀçÇÏÁö ¾Ê´Â ±Ş¿© À¯ÇüÀÔ´Ï´Ù!]");
+				System.out.println("[ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê¸‰ì—¬ ìœ í˜•ì…ë‹ˆë‹¤!]");
 				return;
 			}
-			System.out.print("±Ş¿© »ó¼¼ : ");
+			System.out.print("ê¸‰ì—¬ ìƒì„¸ : ");
 			String salaryDetail = sc.nextLine();
-			System.out.print("±Ş¿©¾×(¸¸¿ø) : ");
+			System.out.print("ê¸‰ì—¬ì•¡(ë§Œì›) : ");
 			int salary = sc.nextInt();
 			if(memberService.insertSalaryHistory(dbMember.getEp_id(), salaryType, salaryDetail, today, salary)) {
-				System.out.println("[±Ş¿© Áö±Ş ¿Ï·á]");
+				System.out.println("[ê¸‰ì—¬ ì§€ê¸‰ ì™„ë£Œ]");
 			} else {
-				System.out.println("[±Ş¿© Áö±Ş ½ÇÆĞ]");
+				System.out.println("[ê¸‰ì—¬ ì§€ê¸‰ ì‹¤íŒ¨]");
 			}			
 		}
 		
@@ -178,14 +176,14 @@ public class MemberController {
 
 
 	private void searchSalaryHistory() {
-		System.out.print("±Ş¿© ³»¿ª Á¶È¸ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("ê¸‰ì—¬ ë‚´ì—­ ì¡°íšŒí•  ì§ì› ì‚¬ë²ˆ : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		} else {
 			List<SalaryHistoryVO> salaryHistory = memberService.SearchSalaryHistory(id);
 			if(salaryHistory == null) {
-				System.out.println("±Ş¿© Áö±Ş ÀÌ·ÂÀÌ ¾ø½À´Ï´Ù.");
+				System.out.println("ê¸‰ì—¬ ì§€ê¸‰ ì´ë ¥ì´ ì—†ìŠµë‹ˆë‹¤.");
 				return;
 			}
 			for(SalaryHistoryVO tmp : salaryHistory) {
@@ -198,59 +196,59 @@ public class MemberController {
 
 
 	private void modifySalary() {
-		System.out.print("¼öÁ¤ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("ìˆ˜ì •í•  ì§ì› ì‚¬ë²ˆ : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		} else {
 			MemberVO dbMember = memberService.selectMember(id);
-			System.out.println("[Á÷¿ø Á¶È¸°á°ú]");
-			System.out.println("»ç¹ø : " + dbMember.getEp_id());
-			System.out.println("ÀÌ¸§ : " + dbMember.getEp_name());
-			System.out.println("ÀÌ¸ŞÀÏ : " + dbMember.getEp_email());
-			System.out.println("¿¬¶ôÃ³ : " + dbMember.getEp_phone_num());
-			System.out.println("¿ù±Ş¿©(¸¸¿ø) : " + dbMember.getEp_salary());
-			System.out.print("º¯°æµÈ ¿ù±Ş¿©(¸¸¿ø) : ");
+			System.out.println("[ì§ì› ì¡°íšŒê²°ê³¼]");
+			System.out.println("ì‚¬ë²ˆ : " + dbMember.getEp_id());
+			System.out.println("ì´ë¦„ : " + dbMember.getEp_name());
+			System.out.println("ì´ë©”ì¼ : " + dbMember.getEp_email());
+			System.out.println("ì—°ë½ì²˜ : " + dbMember.getEp_phone_num());
+			System.out.println("ì›”ê¸‰ì—¬(ë§Œì›) : " + dbMember.getEp_salary());
+			System.out.print("ë³€ê²½ëœ ì›”ê¸‰ì—¬(ë§Œì›) : ");
 			int salary = sc.nextInt();
 			if(memberService.updateSalary(id, salary)) {
-				System.out.println("[±Ş¿© º¯°æ ¿Ï·á]");
+				System.out.println("[ê¸‰ì—¬ ë³€ê²½ ì™„ë£Œ]");
 			} else {
-				System.out.println("[±Ş¿© º¯°æ ½ÇÆĞ]");
+				System.out.println("[ê¸‰ì—¬ ë³€ê²½ ì‹¤íŒ¨]");
 			}			
 		}
 	}
 
 
 	private void modifyDepartment() {
-		System.out.print("¼öÁ¤ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("ìˆ˜ì •í•  ì§ì› ì‚¬ë²ˆ : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		} else {
 			MemberVO dbMember = memberService.selectMember(id);
-			System.out.println("[Á÷¿ø Á¶È¸°á°ú]");
-			System.out.println("»ç¹ø : " + dbMember.getEp_id());
-			System.out.println("ÀÌ¸§ : " + dbMember.getEp_name());
-			System.out.println("ÀÌ¸ŞÀÏ : " + dbMember.getEp_email());
-			System.out.println("¿¬¶ôÃ³ : " + dbMember.getEp_phone_num());
-			System.out.println("ºÎ¼­ : " + dbMember.getEp_dept());
-			System.out.println("-ºÎ¼­ ¸ñ·Ï-");
+			System.out.println("[ì§ì› ì¡°íšŒê²°ê³¼]");
+			System.out.println("ì‚¬ë²ˆ : " + dbMember.getEp_id());
+			System.out.println("ì´ë¦„ : " + dbMember.getEp_name());
+			System.out.println("ì´ë©”ì¼ : " + dbMember.getEp_email());
+			System.out.println("ì—°ë½ì²˜ : " + dbMember.getEp_phone_num());
+			System.out.println("ë¶€ì„œ : " + dbMember.getEp_dept());
+			System.out.println("-ë¶€ì„œ ëª©ë¡-");
 			List<DeptVO> deptList = memberService.selectAllDept();
 			for(DeptVO tmp : deptList) {
 				System.out.println(tmp.getDm_num() + ". " + tmp.getDm_name());
 			}
-			System.out.print("º¯°æµÈ ºÎ¼­ ¹øÈ£ : ");
+			System.out.print("ë³€ê²½ëœ ë¶€ì„œ ë²ˆí˜¸ : ");
 			int dept = sc.nextInt();
 			sc.nextLine();
-			System.out.print("ºÎ¼­ ÀÌµ¿ »çÀ¯ : ");
+			System.out.print("ë¶€ì„œ ì´ë™ ì‚¬ìœ  : ");
 			String reason = sc.nextLine();
 			LocalDate date = LocalDate.now();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			String today = date.format(formatter);
 			if(memberService.updateDept(id, dept, reason, today, dbMember.getEp_id())) {
-				System.out.println("[ºÎ¼­ º¯°æ ¿Ï·á]");
+				System.out.println("[ë¶€ì„œ ë³€ê²½ ì™„ë£Œ]");
 			} else {
-				System.out.println("[ºÎ¼­ º¯°æ ½ÇÆĞ]");
+				System.out.println("[ë¶€ì„œ ë³€ê²½ ì‹¤íŒ¨]");
 			}
 			
 		}
@@ -259,23 +257,23 @@ public class MemberController {
 
 
 	private void modifyContact() {
-		System.out.print("¼öÁ¤ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("ìˆ˜ì •í•  ì§ì› ì‚¬ë²ˆ : ");
 		String id = sc.next();
 		if(memberService.selectMember(id) == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		} else {
 			MemberVO dbMember = memberService.selectMember(id);
-			System.out.println("[Á÷¿ø Á¶È¸°á°ú]");
-			System.out.println("»ç¹ø : " + dbMember.getEp_id());
-			System.out.println("ÀÌ¸§ : " + dbMember.getEp_name());
-			System.out.println("ÀÌ¸ŞÀÏ : " + dbMember.getEp_email());
-			System.out.println("¿¬¶ôÃ³ : " + dbMember.getEp_phone_num());
-			System.out.print("º¯°æµÈ ¿¬¶ôÃ³ : ");
+			System.out.println("[ì§ì› ì¡°íšŒê²°ê³¼]");
+			System.out.println("ì‚¬ë²ˆ : " + dbMember.getEp_id());
+			System.out.println("ì´ë¦„ : " + dbMember.getEp_name());
+			System.out.println("ì´ë©”ì¼ : " + dbMember.getEp_email());
+			System.out.println("ì—°ë½ì²˜ : " + dbMember.getEp_phone_num());
+			System.out.print("ë³€ê²½ëœ ì—°ë½ì²˜ : ");
 			String newPhone = sc.next();
 			if(memberService.updatePhone(id, newPhone)) {
-				System.out.println("[¿¬¶ôÃ³ º¯°æ ¿Ï·á]");
+				System.out.println("[ì—°ë½ì²˜ ë³€ê²½ ì™„ë£Œ]");
 			} else {
-				System.out.println("[¿¬¶ôÃ³ º¯°æ ½ÇÆĞ]");
+				System.out.println("[ì—°ë½ì²˜ ë³€ê²½ ì‹¤íŒ¨]");
 				}
 				
 			}
@@ -285,11 +283,11 @@ public class MemberController {
 
 
 	private void searchMember() {
-		System.out.print("Á¶È¸ÇÒ Á÷¿ø »ç¹ø : ");
+		System.out.print("ì¡°íšŒí•  ì§ì› ì‚¬ë²ˆ : ");
 		String id = sc.next();
 		MemberVO dbMember = memberService.selectMember(id);
 		if(dbMember == null) {
-			System.out.println("[Á÷¿ø Á¶È¸ ½ÇÆĞ]");
+			System.out.println("[ì§ì› ì¡°íšŒ ì‹¤íŒ¨]");
 		} else {
 			System.out.println(dbMember);
 		}
@@ -298,13 +296,14 @@ public class MemberController {
 
 	private void register() {
 		
-		System.out.print("Á÷¿ø ÀÌ¸§ : ");
+		System.out.print("ì§ì› ì´ë¦„ : ");
 		String name = sc.next();
-		System.out.print("Á÷¿ø ÀÌ¸ŞÀÏ : ");
+		System.out.println(name);
+		System.out.print("ì§ì› ì´ë©”ì¼ : ");
 		String email = sc.next();
-		System.out.print("Á÷¿ø ¿¬¶ôÃ³ : ");
+		System.out.print("ì§ì› ì—°ë½ì²˜ : ");
 		String phone = sc.next();
-		System.out.print("Çù»ó ¿ù±Ş¿©(¸¸¿ø) : ");
+		System.out.print("í˜‘ìƒ ì›”ê¸‰ì—¬(ë§Œì›) : ");
 		int salary = sc.nextInt();
 		MemberVO member = new MemberVO(name, email, phone, salary);
 		int memberCount = memberService.selectMemberCount() + 1;
@@ -315,9 +314,9 @@ public class MemberController {
 		}
 		member.setEp_id(firstLetter + num);
 		if(memberService.insertMember(member)) {
-			System.out.println("[Á÷¿ø µî·Ï ¿Ï·á]");
+			System.out.println("[ì§ì› ë“±ë¡ ì™„ë£Œ]");
 		} else {
-			System.out.println("[Á÷¿ø µî·Ï ½ÇÆĞ]");
+			System.out.println("[ì§ì› ë“±ë¡ ì‹¤íŒ¨]");
 		}	
 		
 	}

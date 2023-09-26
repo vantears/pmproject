@@ -12,7 +12,7 @@ public class SalaryHistoryVO {
 	private String sh_pa_type, sh_type_detail, sh_ep_id;
 	
 	public String toString() {
-		return "[Áö±ŞÀÏ : " + getSh_payday_str() + " / " + "±Ş¿©Ç×¸ñ : " + sh_pa_type + " / " + "±Ş¿© »ó¼¼ : " + sh_type_detail + " / " + "±Ş¿©¾×(¸¸¿ø) : " + sh_salary + "]"; 
+		return "[ì§€ê¸‰ì¼ : " + getSh_payday_str() + " / " + "ê¸‰ì—¬í•­ëª© : " + sh_pa_type + " / " + "ê¸‰ì—¬ ìƒì„¸ : " + sh_type_detail + " / " + "ê¸‰ì—¬ì•¡(ë§Œì›) : " + sh_salary + "]"; 
 	}
 	
 	public String getSh_payday_str() {
