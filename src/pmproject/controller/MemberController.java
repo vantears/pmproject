@@ -298,7 +298,6 @@ public class MemberController {
 		
 		System.out.print("직원 이름 : ");
 		String name = sc.next();
-		System.out.println(name);
 		System.out.print("직원 이메일 : ");
 		String email = sc.next();
 		System.out.print("직원 연락처 : ");
