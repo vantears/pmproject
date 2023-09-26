@@ -25,7 +25,6 @@ public class TimeoffController {
 			TOPrintMenu();
 			menu2 = sc.nextInt();
 			timeoff2(menu2);
-			System.out.println("=================");
 		}while(menu2 != EXIT2);
 		
 	}
@@ -59,8 +58,26 @@ private void timeoff2(int menu) {
 	}
 	
 	private void LeaveModify() {
-	// TODO Auto-generated method stub
-	
+		System.out.print("휴가 수정할 직원 사번 : ");
+		String ep_id = sc.next();
+		List<LeaveVO> leaveList = timeoffService.selectLeaveList(ep_id);
+		if(leaveList == null) {
+			System.out.println("[해당 직원의 휴가 내역이 없습니다.]");
+		} else {
+			for(LeaveVO tmp : leaveList) {
+				System.out.println(tmp);
+			}
+		}
+		System.out.print("수정할 휴가 번호 : ");
+		int le_num = sc.nextInt();
+		System.out.print("변경된 휴가 시작 날짜(yyyy-mm-dd) : ");
+		String le_start_date = sc.next();
+		System.out.print("변경된 휴가 복귀 날짜(yyyy-mm-dd) : ");
+		String le_end_date = sc.next();
+		sc.nextLine();
+		System.out.print("변경된 휴가 사유 : ");
+		String le_type = sc.nextLine();
+		timeoffService.updateLeave(le_num, le_start_date, le_end_date, le_type);
 }
 
 
@@ -113,6 +130,10 @@ private void timeoff2(int menu) {
 
 	private void TOInquiry() {
 		List<TimeoffVO> timeoffList = timeoffService.getTimeoffList();
+		if(timeoffList == null) {
+			System.out.println("[퇴사자 이력이 없습니다.]");
+			return;
+		}
 		for(TimeoffVO tmp2 : timeoffList) {
 			System.out.println(tmp2);
 		}

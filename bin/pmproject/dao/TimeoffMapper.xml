@@ -22,6 +22,9 @@
   	<select id="selectLeaveList" resultType="pmproject.vo.LeaveVO">
   		select * from `leave` where le_ep_id = #{ep_id}
   	</select>
+  	<update id="updateLeave">
+  		update `leave` set le_start_date = #{le_start_date}, le_end_date = #{le_end_date}, le_type = #{le_type} where le_num = #{le_num}
+  	</update>
 </mapper>
 
 

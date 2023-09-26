@@ -142,7 +142,9 @@ public class AttendanceServiceImp implements AttendanceService {
 			return;
 		}
 		for(MemberVO tmp : dbMemberList) {
-			attendanceDao.insertAttendance(tmp.getEp_id(), formattedDateTime);
+			if(tmp.getEp_st_num() == 1) {
+				attendanceDao.insertAttendance(tmp.getEp_id(), formattedDateTime);				
+			}
 		}
 	}
 

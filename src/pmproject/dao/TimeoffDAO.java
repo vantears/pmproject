@@ -19,4 +19,6 @@ public interface TimeoffDAO {
 
 	List<LeaveVO> selectLeaveList(@Param("ep_id") String ep_id);
 
+	boolean updateLeave(@Param("le_num") int le_num, @Param("le_start_date") String le_start_date, @Param("le_end_date") String le_end_date, @Param("le_type") String le_type);
+
 }

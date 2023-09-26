@@ -92,6 +92,10 @@ public class AttendanceController {
 		String formattedDateTime = nowDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         System.out.print("직원 ID를 입력하세요: ");
         String employeeId = sc.next();
+        if(memberService.selectMember(employeeId).getEp_st_num() != 1) {
+			System.out.println("[퇴사한 직원입니다.]");
+			return;
+		}
         printAttendanceMenu();
     	int ad_at_num = sc.nextInt();
     	List<AttendanceVO> dbAtList = attendanceService.checkAttendanceDate(formattedDateTime);

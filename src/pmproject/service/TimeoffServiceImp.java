@@ -80,5 +80,18 @@ public class TimeoffServiceImp implements TimeoffService{
 			return null;
 		}
 		return timeoffDao.selectLeaveList(ep_id);
+	}
+
+	@Override
+	public void updateLeave(int le_num, String le_start_date, String le_end_date, String le_type) {
+		if(le_start_date == null || le_end_date == null || le_type == null) {
+			return;
+		}
+		if(timeoffDao.updateLeave(le_num, le_start_date, le_end_date, le_type)) {
+			System.out.println("[휴가 수정 완료]");
+		} else {
+			System.out.println("[휴가 수정 실패]");
+		}
+		
 	}	
 }

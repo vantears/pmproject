@@ -17,4 +17,6 @@ public interface TimeoffService {
 
 	List<LeaveVO> selectLeaveList(String ep_id);
 
+	void updateLeave(int le_num, String le_start_date, String le_end_date, String le_type);
+
 }
